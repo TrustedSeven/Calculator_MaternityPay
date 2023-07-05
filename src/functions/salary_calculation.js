@@ -1,4 +1,4 @@
-function calculateSalaryBreakdown(salary) {
+export function calculateSalaryBreakdown(salary) {
     const personalAllowance = 12570;
     const taxRate = 0.20;
     const weeklyPrimaryThreshold = 242;
@@ -21,34 +21,34 @@ function calculateSalaryBreakdown(salary) {
 
     return {
         daily: {
-            grossIncome: (salary / (weeksPerYear * daysPerWeek)).toFixed(2),
-            taxableIncome: (taxableIncome / (weeksPerYear * daysPerWeek)).toFixed(2),
-            tax: (tax / (weeksPerYear * daysPerWeek)).toFixed(2),
-            nationalInsurance: (weeklyNI / daysPerWeek).toFixed(2),
-            takeHomePay: (takeHomePay / (weeksPerYear * daysPerWeek)).toFixed(2)
+            grossIncome: parseFloat(salary / (weeksPerYear * daysPerWeek)).toFixed(2),
+            taxableIncome: parseFloat(taxableIncome / (weeksPerYear * daysPerWeek)).toFixed(2),
+            tax: parseFloat(tax / (weeksPerYear * daysPerWeek)).toFixed(2),
+            nationalInsurance: parseFloat(weeklyNI / daysPerWeek).toFixed(2),
+            takeHomePay: parseFloat(takeHomePay / (weeksPerYear * daysPerWeek)).toFixed(2)
         },
         weekly: {
-            grossIncome: weeklyEarnings.toFixed(2),
-            taxableIncome: (taxableIncome / weeksPerYear).toFixed(2),
-            tax: (tax / weeksPerYear).toFixed(2),
-            nationalInsurance: weeklyNI.toFixed(2),
-            takeHomePay: (takeHomePay / weeksPerYear).toFixed(2)
+            grossIncome: parseFloat(weeklyEarnings).toFixed(2),
+            taxableIncome: parseFloat(taxableIncome / weeksPerYear).toFixed(2),
+            tax: parseFloat(tax / weeksPerYear).toFixed(2),
+            nationalInsurance: parseFloat(weeklyNI).toFixed(2),
+            takeHomePay: parseFloat(takeHomePay / weeksPerYear).toFixed(2)
         },
         monthly: {
-            grossIncome: (salary / monthsPerYear).toFixed(2),
-            taxableIncome: (taxableIncome / monthsPerYear).toFixed(2),
-            tax: (tax / monthsPerYear).toFixed(2),
-            nationalInsurance: (annualNI / monthsPerYear).toFixed(2),
-            takeHomePay: (takeHomePay / monthsPerYear).toFixed(2)
+            grossIncome: parseFloat(salary / monthsPerYear).toFixed(2),
+            taxableIncome: parseFloat(taxableIncome / monthsPerYear).toFixed(2),
+            tax: parseFloat(tax / monthsPerYear).toFixed(2),
+            nationalInsurance: parseFloat(annualNI / monthsPerYear).toFixed(2),
+            takeHomePay: parseFloat(takeHomePay / monthsPerYear).toFixed(2)
         },
         annual: {
-            grossIncome: salary.toFixed(2),
-            taxableIncome: taxableIncome.toFixed(2),
-            tax: tax.toFixed(2),
-            nationalInsurance: annualNI.toFixed(2),
-            takeHomePay: takeHomePay.toFixed(2)
+            grossIncome: parseFloat(salary).toFixed(2),
+            taxableIncome: parseFloat(taxableIncome).toFixed(2),
+            tax: parseFloat(tax).toFixed(2),
+            nationalInsurance: parseFloat(annualNI).toFixed(2),
+            takeHomePay: parseFloat(takeHomePay).toFixed(2)
         }
     };
 }
 
-console.log(calculateSalaryBreakdown(34000));
+// console.log(calculateSalaryBreakdown(34000));
