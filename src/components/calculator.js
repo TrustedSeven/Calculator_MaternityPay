@@ -37,6 +37,7 @@ export default function Calculator() {
     tax: "",
     taxableIncome: "",
   });
+  const [smp, setSmp] = useState(0);
   const [duedate, setDuedate] = useState();
   const [startdate, setStartdate] = useState();
   const [salary, setSalary] = useState();
@@ -144,7 +145,7 @@ export default function Calculator() {
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"
             onClick={MainCal}
           >
-            Calculate Maternity Pay
+            Calculate Now
           </button>
         </div>
       </div>
@@ -258,7 +259,25 @@ export default function Calculator() {
                 Total SMP amount
               </h5>
             </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">£</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              £{smp}
+            </p>
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                Total SMP amount
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              £{smp}
+            </p>
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                Total SMP amount
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              £{smp}
+            </p>
           </div>
         </div>
       </div>
