@@ -12,11 +12,15 @@ function addDays(date, days) {
 function calculateSmp(dueDateStr, startDateStr, grossPayDatesAndAmounts) {
     // Calculate qualifying week
     let dueDate = new Date(dueDateStr);
+    console.log('dueDate',dueDate)
     let qualifyingWeekStart = addDays(dueDate, -7*15);
+    console.log("qualifyingWeekStart", qualifyingWeekStart)
     
     // Calculate relevant period
     let relevantPeriodEnd = addDays(qualifyingWeekStart, -1);
+    console.log("relevantPeriodEnd", relevantPeriodEnd);
     let relevantPeriodStart = addDays(relevantPeriodEnd, -7*8);
+    console.log("relevantPeriodStart",relevantPeriodStart)
     
     // Filter the gross pay within relevant period
     let relevantGrossPay = grossPayDatesAndAmounts.filter(item => {
@@ -28,6 +32,7 @@ function calculateSmp(dueDateStr, startDateStr, grossPayDatesAndAmounts) {
     let totalEarnings = relevantGrossPay.reduce((a, b) => a + b, 0);
     let averageMonthlyEarning = totalEarnings / relevantGrossPay.length;
     let averageWeeklyEarning = (averageMonthlyEarning * 12) / 52;
+    console.log("averageWeeklyEarning", averageWeeklyEarning)
     
     // Calculate SMP
     let smpFirst6Weeks = averageWeeklyEarning * 0.9 * 6;
@@ -42,14 +47,18 @@ function calculateSmp(dueDateStr, startDateStr, grossPayDatesAndAmounts) {
 let dueDate = '2023-12-25'; // format: 'YYYY-MM-DD'
 let startDate = '2023-10-01'; // format: 'YYYY-MM-DD'
 let grossPayDatesAndAmounts = [
-    {date: '2023-01-31', amount: 2000},
-    {date: '2023-02-28', amount: 2100},
-    {date: '2023-03-31', amount: 2050},
-    {date: '2023-04-30', amount: 2000},
-    {date: '2023-05-31', amount: 2100},
-    {date: '2023-06-30', amount: 2050},
-    {date: '2023-07-31', amount: 2000},
-    {date: '2023-08-31', amount: 2100},
+    {date: '2023-01-31', amount: 3400},
+    {date: '2023-02-28', amount: 3400},
+    {date: '2023-03-31', amount: 3400},
+    {date: '2023-04-30', amount: 3400},
+    {date: '2023-05-31', amount: 3400},
+    {date: '2023-06-30', amount: 3400},
+    {date: '2023-07-31', amount: 3400},
+    {date: '2023-08-31', amount: 3400},
+    {date: '2023-09-30', amount: 3400},
+    {date: '2023-10-31', amount: 3400},
+    {date: '2023-11-30', amount: 3400},
+    {date: '2023-12-31', amount: 3400},
 ]; // format: {date: 'YYYY-MM-DD', amount: amount}
 
 // Calculate the total SMP
