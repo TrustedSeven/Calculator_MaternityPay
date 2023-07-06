@@ -36,6 +36,7 @@ export function calculateSalaryBreakdown(salary) {
         },
         monthly: {
             grossIncome: parseFloat(salary / monthsPerYear).toFixed(2),
+            
             taxableIncome: parseFloat(taxableIncome / monthsPerYear).toFixed(2),
             tax: parseFloat(tax / monthsPerYear).toFixed(2),
             nationalInsurance: parseFloat(annualNI / monthsPerYear).toFixed(2),

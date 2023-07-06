@@ -6,7 +6,7 @@ import Salary_Calc from "../assets/image/salary_calc.jpg";
 import Maternity_Leave from "../assets/image/maternityleave.jpg";
 
 import { calculateSalaryBreakdown } from "../functions/salary_calculation";
-import SmpCalculation from "../functions/smp_calculation";
+import { calculateSmp } from "../functions/smp_calculation";
 
 export default function Calculator() {
   const [daily, setDaily] = useState({
@@ -37,10 +37,19 @@ export default function Calculator() {
     tax: "",
     taxableIncome: "",
   });
+  
+  const [grossPayDatesAndAmounts, setGrossPayDatesAndAmounts] = useState();
+
   const [smp, setSmp] = useState(0);
   const [duedate, setDuedate] = useState();
   const [startdate, setStartdate] = useState();
   const [salary, setSalary] = useState();
+  const [qualifyingWeekStart, setQualifyingWeekStart] = useState();
+  const [relevantPeriodEnd, setRelevantPeriodEnd] = useState();
+  const [relevantPeriodStart, setRelevantPeriodStart] = useState();
+  const [firstmonth, setFirstmonth] = useState();
+  const [secondmonth, setSecondmonth] = useState();
+  const [nextmonth, setNextmonth] = useState();
 
   const MainCal = () => {
     console.log(calculateSalaryBreakdown(salary));
@@ -48,6 +57,14 @@ export default function Calculator() {
     setWeekly(calculateSalaryBreakdown(salary).weekly);
     setMonthly(calculateSalaryBreakdown(salary).monthly);
     setAnual(calculateSalaryBreakdown(salary).annual);
+    console.log("=========",calculateSmp(duedate, startdate, grossPayDatesAndAmounts));
+    setSmp(parseFloat(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).smp).toFixed(2));
+    setQualifyingWeekStart(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).qualifyingWeekStart);
+    setRelevantPeriodEnd(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).relevantPeriodEnd);
+    setRelevantPeriodStart(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).relevantPeriodStart);
+    setFirstmonth(parseFloat(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).firstmonth).toFixed(2));
+    setSecondmonth(parseFloat(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).secondmonth).toFixed(2));
+    setNextmonth(parseFloat(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).restmonth).toFixed(2));
   };
 
   return (
@@ -137,6 +154,22 @@ export default function Calculator() {
               onChange={(event) => {
                 console.log(event.target.value);
                 setSalary(event.target.value);
+                setGrossPayDatesAndAmounts(
+                  [
+                    {date: '2023-01-31', amount: event.target.value/12},
+                    {date: '2023-02-28', amount: event.target.value/12},
+                    {date: '2023-03-31', amount: event.target.value/12},
+                    {date: '2023-04-30', amount: event.target.value/12},
+                    {date: '2023-05-31', amount: event.target.value/12},
+                    {date: '2023-06-30', amount: event.target.value/12},
+                    {date: '2023-07-31', amount: event.target.value/12},
+                    {date: '2023-08-31', amount: event.target.value/12},
+                    {date: '2023-09-30', amount: event.target.value/12},
+                    {date: '2023-10-31', amount: event.target.value/12},
+                    {date: '2023-11-30', amount: event.target.value/12},
+                    {date: '2023-12-31', amount: event.target.value/12},
+                ]
+                )
               }}
               required
             />
@@ -254,29 +287,125 @@ export default function Calculator() {
             <img class="rounded-t-lg" src={Maternity_Leave} alt="" />
           </a>
           <div class="p-5">
-            <a href="#">
+            {/* <a href="#">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 Total SMP amount
               </h5>
             </a>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               £{smp}
+            </p> */}
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                Qualifying Week Start
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              {qualifyingWeekStart}
             </p>
             <a href="#">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Total SMP amount
+                Relevant Period Start
               </h5>
             </a>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              £{smp}
+              {relevantPeriodStart}
             </p>
             <a href="#">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Total SMP amount
+                Relevant Period End
               </h5>
             </a>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              £{smp}
+              {relevantPeriodEnd}
+            </p>
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                FirstMonth
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              {firstmonth}
+            </p>
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                SecondMonth
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              {secondmonth}
+            </p>
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                3rd Month
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              {nextmonth}
+            </p>
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                4th Month
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              {nextmonth}
+            </p>
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                5th Month
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              {nextmonth}
+            </p>
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                6th Month
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              {nextmonth}
+            </p>
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                7th Month
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              {nextmonth}
+            </p>
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                8th Month
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              {nextmonth}
+            </p>
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                9th Month
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              {nextmonth}
+            </p>
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                10th Month
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              {nextmonth*0.75}
+            </p>
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                next Month
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              0
             </p>
           </div>
         </div>
