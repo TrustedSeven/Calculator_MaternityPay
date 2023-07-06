@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import DatePicker from "react-multi-date-picker";
 
 import Salary_Calc from "../assets/image/salary_calc.jpg";
 import Maternity_Leave from "../assets/image/maternityleave.jpg";
@@ -40,7 +39,7 @@ export default function Calculator() {
   
   const [grossPayDatesAndAmounts, setGrossPayDatesAndAmounts] = useState();
 
-  const [smp, setSmp] = useState(0);
+  // const [smp, setSmp] = useState(0);
   const [duedate, setDuedate] = useState();
   const [startdate, setStartdate] = useState();
   const [salary, setSalary] = useState();
@@ -58,7 +57,7 @@ export default function Calculator() {
     setMonthly(calculateSalaryBreakdown(salary).monthly);
     setAnual(calculateSalaryBreakdown(salary).annual);
     console.log("=========",calculateSmp(duedate, startdate, grossPayDatesAndAmounts));
-    setSmp(parseFloat(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).smp).toFixed(2));
+    // setSmp(parseFloat(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).smp).toFixed(2));
     setQualifyingWeekStart(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).qualifyingWeekStart);
     setRelevantPeriodEnd(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).relevantPeriodEnd);
     setRelevantPeriodStart(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).relevantPeriodStart);
@@ -187,7 +186,7 @@ export default function Calculator() {
           Salary per Day/Week/Month/Year
         </h2>
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-5">
-          <a href="#">
+          <a>
             <img class="rounded-t-lg" src={Salary_Calc} alt="" />
           </a>
           <div class="p-5">
