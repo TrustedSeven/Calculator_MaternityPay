@@ -36,7 +36,7 @@ export default function Calculator() {
     tax: "",
     taxableIncome: "",
   });
-  
+
   const [grossPayDatesAndAmounts, setGrossPayDatesAndAmounts] = useState();
 
   // const [smp, setSmp] = useState(0);
@@ -56,14 +56,38 @@ export default function Calculator() {
     setWeekly(calculateSalaryBreakdown(salary).weekly);
     setMonthly(calculateSalaryBreakdown(salary).monthly);
     setAnual(calculateSalaryBreakdown(salary).annual);
-    console.log("=========",calculateSmp(duedate, startdate, grossPayDatesAndAmounts));
+    console.log(
+      "=========",
+      calculateSmp(duedate, startdate, grossPayDatesAndAmounts)
+    );
     // setSmp(parseFloat(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).smp).toFixed(2));
-    setQualifyingWeekStart(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).qualifyingWeekStart);
-    setRelevantPeriodEnd(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).relevantPeriodEnd);
-    setRelevantPeriodStart(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).relevantPeriodStart);
-    setFirstmonth(parseFloat(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).firstmonth).toFixed(2));
-    setSecondmonth(parseFloat(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).secondmonth).toFixed(2));
-    setNextmonth(parseFloat(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).restmonth).toFixed(2));
+    setQualifyingWeekStart(
+      calculateSmp(duedate, startdate, grossPayDatesAndAmounts)
+        .qualifyingWeekStart
+    );
+    setRelevantPeriodEnd(
+      calculateSmp(duedate, startdate, grossPayDatesAndAmounts)
+        .relevantPeriodEnd
+    );
+    setRelevantPeriodStart(
+      calculateSmp(duedate, startdate, grossPayDatesAndAmounts)
+        .relevantPeriodStart
+    );
+    setFirstmonth(
+      parseFloat(
+        calculateSmp(duedate, startdate, grossPayDatesAndAmounts).firstmonth
+      ).toFixed(2)
+    );
+    setSecondmonth(
+      parseFloat(
+        calculateSmp(duedate, startdate, grossPayDatesAndAmounts).secondmonth
+      ).toFixed(2)
+    );
+    setNextmonth(
+      parseFloat(
+        calculateSmp(duedate, startdate, grossPayDatesAndAmounts).restmonth
+      ).toFixed(2)
+    );
   };
 
   return (
@@ -153,22 +177,20 @@ export default function Calculator() {
               onChange={(event) => {
                 console.log(event.target.value);
                 setSalary(event.target.value);
-                setGrossPayDatesAndAmounts(
-                  [
-                    {date: '2023-01-31', amount: event.target.value/12},
-                    {date: '2023-02-28', amount: event.target.value/12},
-                    {date: '2023-03-31', amount: event.target.value/12},
-                    {date: '2023-04-30', amount: event.target.value/12},
-                    {date: '2023-05-31', amount: event.target.value/12},
-                    {date: '2023-06-30', amount: event.target.value/12},
-                    {date: '2023-07-31', amount: event.target.value/12},
-                    {date: '2023-08-31', amount: event.target.value/12},
-                    {date: '2023-09-30', amount: event.target.value/12},
-                    {date: '2023-10-31', amount: event.target.value/12},
-                    {date: '2023-11-30', amount: event.target.value/12},
-                    {date: '2023-12-31', amount: event.target.value/12},
-                ]
-                )
+                setGrossPayDatesAndAmounts([
+                  { date: "2023-01-31", amount: event.target.value / 12 },
+                  { date: "2023-02-28", amount: event.target.value / 12 },
+                  { date: "2023-03-31", amount: event.target.value / 12 },
+                  { date: "2023-04-30", amount: event.target.value / 12 },
+                  { date: "2023-05-31", amount: event.target.value / 12 },
+                  { date: "2023-06-30", amount: event.target.value / 12 },
+                  { date: "2023-07-31", amount: event.target.value / 12 },
+                  { date: "2023-08-31", amount: event.target.value / 12 },
+                  { date: "2023-09-30", amount: event.target.value / 12 },
+                  { date: "2023-10-31", amount: event.target.value / 12 },
+                  { date: "2023-11-30", amount: event.target.value / 12 },
+                  { date: "2023-12-31", amount: event.target.value / 12 },
+                ]);
               }}
               required
             />
@@ -186,15 +208,13 @@ export default function Calculator() {
           Salary per Day/Week/Month/Year
         </h2>
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-5">
-          <a>
-            <img class="rounded-t-lg" src={Salary_Calc} alt="" />
-          </a>
+          <img class="rounded-t-lg" src={Salary_Calc} alt="" />
+
           <div class="p-5">
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Daily Income/Tax
-              </h5>
-            </a>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              Daily Income/Tax
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               GrossIncome : {daily.grossIncome}
             </p>
@@ -212,11 +232,10 @@ export default function Calculator() {
             </p>
           </div>
           <div class="p-5">
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Weekly Income/Tax
-              </h5>
-            </a>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              Weekly Income/Tax
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               GrossIncome : {weekly.grossIncome}
             </p>
@@ -234,11 +253,10 @@ export default function Calculator() {
             </p>
           </div>
           <div class="p-5">
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Monthly Income/Tax
-              </h5>
-            </a>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              Monthly Income/Tax
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               GrossIncome : {monthly.grossIncome}
             </p>
@@ -256,11 +274,10 @@ export default function Calculator() {
             </p>
           </div>
           <div class="p-5">
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Anual Income/Tax
-              </h5>
-            </a>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              Anual Income/Tax
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               GrossIncome : {anual.grossIncome}
             </p>
@@ -282,9 +299,8 @@ export default function Calculator() {
       <div className="col-span-1">
         <h2 class="text-2xl font-extrabold dark:text-white">SMP details</h2>
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-5">
-          <a href="#">
-            <img class="rounded-t-lg" src={Maternity_Leave} alt="" />
-          </a>
+          <img class="rounded-t-lg" src={Maternity_Leave} alt="" />
+
           <div class="p-5">
             {/* <a href="#">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -294,118 +310,116 @@ export default function Calculator() {
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               £{smp}
             </p> */}
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Qualifying Week Start
-              </h5>
-            </a>
+
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              Qualifying Week Start
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {qualifyingWeekStart}
             </p>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Relevant Period Start
-              </h5>
-            </a>
+
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              Relevant Period Start
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {relevantPeriodStart}
             </p>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Relevant Period End
-              </h5>
-            </a>
+
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              Relevant Period End
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {relevantPeriodEnd}
             </p>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                FirstMonth
-              </h5>
-            </a>
+
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              FirstMonth
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {firstmonth}
             </p>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                SecondMonth
-              </h5>
-            </a>
+
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              SecondMonth
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {secondmonth}
             </p>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                3rd Month
-              </h5>
-            </a>
+
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              3rd Month
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {nextmonth}
             </p>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                4th Month
-              </h5>
-            </a>
+
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              4th Month
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {nextmonth}
             </p>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                5th Month
-              </h5>
-            </a>
+
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              5th Month
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {nextmonth}
             </p>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                6th Month
-              </h5>
-            </a>
+
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              6th Month
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {nextmonth}
             </p>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                7th Month
-              </h5>
-            </a>
+
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              7th Month
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {nextmonth}
             </p>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                8th Month
-              </h5>
-            </a>
+
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              8th Month
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {nextmonth}
             </p>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                9th Month
-              </h5>
-            </a>
+
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              9th Month
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {nextmonth}
             </p>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                10th Month
-              </h5>
-            </a>
+
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              10th Month
+            </h5>
+
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {nextmonth*0.75}
+              {nextmonth * 0.75}
             </p>
-            <a href="#">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                next Month
-              </h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              0
-            </p>
+
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              next Month
+            </h5>
+
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">0</p>
           </div>
         </div>
       </div>
