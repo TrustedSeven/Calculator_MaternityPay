@@ -91,7 +91,7 @@ export default function Calculator() {
   };
 
   return (
-    <div className="grid grid-cols-3 ml-5">
+    <div className="grid grid-cols-4 ml-5">
       <div className="content-center items-center col-span-1">
         <h2 class="text-2xl font-extrabold dark:text-white">Input details</h2>
         <div className="mt-5">
@@ -296,7 +296,7 @@ export default function Calculator() {
           </div>
         </div>
       </div>
-      <div className="col-span-1">
+      <div className="col-span-2 pr-5">
         <h2 class="text-2xl font-extrabold dark:text-white">SMP details</h2>
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-5">
           <img class="rounded-t-lg" src={Maternity_Leave} alt="" />
@@ -335,7 +335,7 @@ export default function Calculator() {
               {relevantPeriodEnd}
             </p>
 
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {/* <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               FirstMonth
             </h5>
 
@@ -419,7 +419,70 @@ export default function Calculator() {
               next Month
             </h5>
 
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">0</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">0</p> */}
+          </div>
+        </div>
+        <div>
+          <div class="relative overflow-x-auto shadow-md sm:rounded-lg pt-5">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                  <th scope="col" class="px-6 py-3">
+                    Month
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    Regular Pay
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    SMP(90%)
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    SMP(172.48)
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                    Total Pay
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Apple
+                  </th>
+                  <td class="px-6 py-4">Silver</td>
+                  <td class="px-6 py-4">Laptop</td>
+                  <td class="px-6 py-4">$2999</td>
+                  <td class="px-6 py-4">Edit</td>
+                </tr>
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Microsoft
+                  </th>
+                  <td class="px-6 py-4">White</td>
+                  <td class="px-6 py-4">Laptop PC</td>
+                  <td class="px-6 py-4">$1999</td>
+                  <td class="px-6 py-4">Edit</td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Magic
+                  </th>
+                  <td class="px-6 py-4">Black</td>
+                  <td class="px-6 py-4">Accessories</td>
+                  <td class="px-6 py-4">$99</td>
+                  <td class="px-6 py-4">Edit</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
