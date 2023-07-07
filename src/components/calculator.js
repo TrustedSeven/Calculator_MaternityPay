@@ -6,6 +6,7 @@ import Maternity_Leave from "../assets/image/maternityleave.jpg";
 
 import { calculateSalaryBreakdown } from "../functions/salary_calculation";
 import { calculateSmp } from "../functions/smp_calculation";
+import { calculateSMPMonthlyBreackdown } from "../functions/calcualteSMP";
 
 export default function Calculator() {
   const [daily, setDaily] = useState({
@@ -46,9 +47,7 @@ export default function Calculator() {
   const [qualifyingWeekStart, setQualifyingWeekStart] = useState();
   const [relevantPeriodEnd, setRelevantPeriodEnd] = useState();
   const [relevantPeriodStart, setRelevantPeriodStart] = useState();
-  const [firstmonth, setFirstmonth] = useState();
-  const [secondmonth, setSecondmonth] = useState();
-  const [nextmonth, setNextmonth] = useState();
+  const [smpdata, setSmpdata] = useState([]);
 
   const MainCal = () => {
     console.log(calculateSalaryBreakdown(salary));
@@ -57,9 +56,10 @@ export default function Calculator() {
     setMonthly(calculateSalaryBreakdown(salary).monthly);
     setAnual(calculateSalaryBreakdown(salary).annual);
     console.log(
-      "=========",
-      calculateSmp(duedate, startdate, grossPayDatesAndAmounts)
+      "=========********",
+      calculateSMPMonthlyBreackdown(duedate, startdate, salary)
     );
+    setSmpdata(calculateSMPMonthlyBreackdown(duedate, startdate, salary));
     // setSmp(parseFloat(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).smp).toFixed(2));
     setQualifyingWeekStart(
       calculateSmp(duedate, startdate, grossPayDatesAndAmounts)
@@ -72,21 +72,6 @@ export default function Calculator() {
     setRelevantPeriodStart(
       calculateSmp(duedate, startdate, grossPayDatesAndAmounts)
         .relevantPeriodStart
-    );
-    setFirstmonth(
-      parseFloat(
-        calculateSmp(duedate, startdate, grossPayDatesAndAmounts).firstmonth
-      ).toFixed(2)
-    );
-    setSecondmonth(
-      parseFloat(
-        calculateSmp(duedate, startdate, grossPayDatesAndAmounts).secondmonth
-      ).toFixed(2)
-    );
-    setNextmonth(
-      parseFloat(
-        calculateSmp(duedate, startdate, grossPayDatesAndAmounts).restmonth
-      ).toFixed(2)
     );
   };
 
@@ -316,7 +301,7 @@ export default function Calculator() {
             </h5>
 
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {qualifyingWeekStart}
+              {Date(qualifyingWeekStart)}
             </p>
 
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -324,7 +309,7 @@ export default function Calculator() {
             </h5>
 
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {relevantPeriodStart}
+              {Date(relevantPeriodStart)}
             </p>
 
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -332,94 +317,8 @@ export default function Calculator() {
             </h5>
 
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {relevantPeriodEnd}
+              {Date(relevantPeriodEnd)}
             </p>
-
-            {/* <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              FirstMonth
-            </h5>
-
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {firstmonth}
-            </p>
-
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              SecondMonth
-            </h5>
-
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {secondmonth}
-            </p>
-
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              3rd Month
-            </h5>
-
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {nextmonth}
-            </p>
-
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              4th Month
-            </h5>
-
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {nextmonth}
-            </p>
-
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              5th Month
-            </h5>
-
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {nextmonth}
-            </p>
-
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              6th Month
-            </h5>
-
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {nextmonth}
-            </p>
-
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              7th Month
-            </h5>
-
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {nextmonth}
-            </p>
-
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              8th Month
-            </h5>
-
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {nextmonth}
-            </p>
-
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              9th Month
-            </h5>
-
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {nextmonth}
-            </p>
-
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              10th Month
-            </h5>
-
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {nextmonth * 0.75}
-            </p>
-
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              next Month
-            </h5>
-
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">0</p> */}
           </div>
         </div>
         <div>
@@ -437,7 +336,7 @@ export default function Calculator() {
                     SMP(90%)
                   </th>
                   <th scope="col" class="px-6 py-3">
-                    SMP(172.48)
+                    SMP(£172.48)
                   </th>
                   <th scope="col" class="px-6 py-3">
                     Total Pay
@@ -445,42 +344,15 @@ export default function Calculator() {
                 </tr>
               </thead>
               <tbody>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                  <th
-                    scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Apple
-                  </th>
-                  <td class="px-6 py-4">Silver</td>
-                  <td class="px-6 py-4">Laptop</td>
-                  <td class="px-6 py-4">$2999</td>
-                  <td class="px-6 py-4">Edit</td>
-                </tr>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                  <th
-                    scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Microsoft
-                  </th>
-                  <td class="px-6 py-4">White</td>
-                  <td class="px-6 py-4">Laptop PC</td>
-                  <td class="px-6 py-4">$1999</td>
-                  <td class="px-6 py-4">Edit</td>
-                </tr>
-                <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                  <th
-                    scope="row"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Magic
-                  </th>
-                  <td class="px-6 py-4">Black</td>
-                  <td class="px-6 py-4">Accessories</td>
-                  <td class="px-6 py-4">$99</td>
-                  <td class="px-6 py-4">Edit</td>
-                </tr>
+                {smpdata.map((item, index) => (
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={index}>
+                    <td class="px-6 py-4">{item.Month}</td>
+                    <td class="px-6 py-4">{item["Regular Pay"]}</td>
+                    <td class="px-6 py-4">{item["SMP (90%)"]}</td>
+                    <td class="px-6 py-4">{item["SMP (£172.48)"]}</td>
+                    <td class="px-6 py-4">{parseFloat(item["SMP (£172.48)"]) + parseFloat(item["Regular Pay"]) + parseFloat(item["SMP (90%)"])}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
