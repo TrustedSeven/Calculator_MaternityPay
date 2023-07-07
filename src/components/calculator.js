@@ -44,9 +44,9 @@ export default function Calculator() {
   const [duedate, setDuedate] = useState();
   const [startdate, setStartdate] = useState();
   const [salary, setSalary] = useState();
-  const [qualifyingWeekStart, setQualifyingWeekStart] = useState();
-  const [relevantPeriodEnd, setRelevantPeriodEnd] = useState();
-  const [relevantPeriodStart, setRelevantPeriodStart] = useState();
+  const [qualifyingWeekStart, setQualifyingWeekStart] = useState("");
+  const [relevantPeriodEnd, setRelevantPeriodEnd] = useState("");
+  const [relevantPeriodStart, setRelevantPeriodStart] = useState("");
   const [smpdata, setSmpdata] = useState([]);
 
   const MainCal = () => {
@@ -301,7 +301,7 @@ export default function Calculator() {
             </h5>
 
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {Date(qualifyingWeekStart)}
+              {qualifyingWeekStart === "" ? "" : Date(qualifyingWeekStart)}
             </p>
 
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -309,7 +309,7 @@ export default function Calculator() {
             </h5>
 
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {Date(relevantPeriodStart)}
+              {relevantPeriodStart === "" ? "" : Date(relevantPeriodStart)}
             </p>
 
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -317,7 +317,7 @@ export default function Calculator() {
             </h5>
 
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              {Date(relevantPeriodEnd)}
+              {relevantPeriodEnd === "" ? "" : Date(relevantPeriodEnd)}
             </p>
           </div>
         </div>
