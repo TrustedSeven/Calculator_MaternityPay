@@ -1,5 +1,5 @@
 // Define the SMP rate
-const SMP_RATE = 172.48;
+// const SMP_RATE = 172.48;
 
 // Function to add or subtract days from a date
 function addDays(date, days) {

@@ -2,10 +2,9 @@ import React from "react";
 import { useState } from "react";
 
 import Salary_Calc from "../assets/image/salary_calc.jpg";
-import Maternity_Leave from "../assets/image/maternityleave.jpg";
+// import Maternity_Leave from "../assets/image/maternityleave.jpg";
 
 import { calculateSalaryBreakdown } from "../functions/salary_calculation";
-import { calculateSmp } from "../functions/smp_calculation";
 import { calculateSMPMonthlyBreackdown } from "../functions/calcualteSMP";
 
 export default function Calculator() {
@@ -38,16 +37,19 @@ export default function Calculator() {
     taxableIncome: "",
   });
 
-  const [grossPayDatesAndAmounts, setGrossPayDatesAndAmounts] = useState();
 
   // const [smp, setSmp] = useState(0);
   const [duedate, setDuedate] = useState();
   const [startdate, setStartdate] = useState();
   const [salary, setSalary] = useState();
-  const [qualifyingWeekStart, setQualifyingWeekStart] = useState("");
-  const [relevantPeriodEnd, setRelevantPeriodEnd] = useState("");
-  const [relevantPeriodStart, setRelevantPeriodStart] = useState("");
-  const [smpdata, setSmpdata] = useState([]);
+  const [smpdata, setSmpdata] = useState([
+    {
+      Month: 'Month',
+      'Regular Pay': 0,
+      'SMP (90%)': 0,
+      'SMP (£172.48)': 0
+    },
+  ]);
 
   const MainCal = () => {
     console.log(calculateSalaryBreakdown(salary));
@@ -59,20 +61,9 @@ export default function Calculator() {
       "=========********",
       calculateSMPMonthlyBreackdown(duedate, startdate, salary)
     );
-    setSmpdata(calculateSMPMonthlyBreackdown(duedate, startdate, salary));
-    // setSmp(parseFloat(calculateSmp(duedate, startdate, grossPayDatesAndAmounts).smp).toFixed(2));
-    setQualifyingWeekStart(
-      calculateSmp(duedate, startdate, grossPayDatesAndAmounts)
-        .qualifyingWeekStart
-    );
-    setRelevantPeriodEnd(
-      calculateSmp(duedate, startdate, grossPayDatesAndAmounts)
-        .relevantPeriodEnd
-    );
-    setRelevantPeriodStart(
-      calculateSmp(duedate, startdate, grossPayDatesAndAmounts)
-        .relevantPeriodStart
-    );
+    let result = [...smpdata];
+    result = calculateSMPMonthlyBreackdown(duedate, startdate, salary);
+    setSmpdata(result);
   };
 
   return (
@@ -162,20 +153,6 @@ export default function Calculator() {
               onChange={(event) => {
                 console.log(event.target.value);
                 setSalary(event.target.value);
-                setGrossPayDatesAndAmounts([
-                  { date: "2023-01-31", amount: event.target.value / 12 },
-                  { date: "2023-02-28", amount: event.target.value / 12 },
-                  { date: "2023-03-31", amount: event.target.value / 12 },
-                  { date: "2023-04-30", amount: event.target.value / 12 },
-                  { date: "2023-05-31", amount: event.target.value / 12 },
-                  { date: "2023-06-30", amount: event.target.value / 12 },
-                  { date: "2023-07-31", amount: event.target.value / 12 },
-                  { date: "2023-08-31", amount: event.target.value / 12 },
-                  { date: "2023-09-30", amount: event.target.value / 12 },
-                  { date: "2023-10-31", amount: event.target.value / 12 },
-                  { date: "2023-11-30", amount: event.target.value / 12 },
-                  { date: "2023-12-31", amount: event.target.value / 12 },
-                ]);
               }}
               required
             />
@@ -283,18 +260,18 @@ export default function Calculator() {
       </div>
       <div className="col-span-2 pr-5">
         <h2 class="text-2xl font-extrabold dark:text-white">SMP details</h2>
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-5">
+        {/* <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-5">
           <img class="rounded-t-lg" src={Maternity_Leave} alt="" />
 
           <div class="p-5">
-            {/* <a href="#">
+            <a href="#">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 Total SMP amount
               </h5>
             </a>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               £{smp}
-            </p> */}
+            </p>
 
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Qualifying Week Start
@@ -320,7 +297,7 @@ export default function Calculator() {
               {relevantPeriodEnd === "" ? "" : Date(relevantPeriodEnd)}
             </p>
           </div>
-        </div>
+        </div> */}
         <div>
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg pt-5">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
