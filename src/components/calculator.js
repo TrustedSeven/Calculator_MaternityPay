@@ -4,6 +4,7 @@ import { useState } from "react";
 import Salary_Calc from "../assets/image/salary_calc.jpg";
 // import Maternity_Leave from "../assets/image/maternityleave.jpg";
 
+import Navbar from "./navbar";
 import { calculateSalaryBreakdown } from "../functions/salary_calculation";
 import { calculateSMPMonthlyBreackdown } from "../functions/calcualteSMP";
 
@@ -67,6 +68,10 @@ export default function Calculator() {
   };
 
   return (
+    <div>
+      <div>
+        <Navbar />
+      </div>
     <div className="grid grid-cols-4 ml-5">
       <div className="content-center items-center col-span-1">
         <h2 class="text-2xl font-extrabold dark:text-white">Input details</h2>
@@ -327,7 +332,7 @@ export default function Calculator() {
                     <td class="px-6 py-4">{item["Regular Pay"]}</td>
                     <td class="px-6 py-4">{item["SMP (90%)"]}</td>
                     <td class="px-6 py-4">{item["SMP (£172.48)"]}</td>
-                    <td class="px-6 py-4">{parseFloat(item["SMP (£172.48)"]) + parseFloat(item["Regular Pay"]) + parseFloat(item["SMP (90%)"])}</td>
+                    <td class="px-6 py-4">{parseFloat(parseFloat(item["SMP (£172.48)"]) + parseFloat(item["Regular Pay"]) + parseFloat(item["SMP (90%)"])).toFixed(2)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -335,6 +340,7 @@ export default function Calculator() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
