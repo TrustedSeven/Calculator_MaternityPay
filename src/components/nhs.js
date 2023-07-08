@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 import Navbar from "./navbar";
+import { calculateNHS } from "../functions/calculateNHS";
 
 export default function NHS() {
   const [duedate, setDuedate] = useState();
@@ -9,9 +10,11 @@ export default function NHS() {
   const [salary, setSalary] = useState();
   const [con1, setCon1] = useState(false);
   const [con2, setCon2] = useState(false);
+  const [nhsdata, setNhsdata] = useState([]);
 
   const MainCal = () => {
-    console.log("*ddddddddd*****", duedate, startdate, salary, con1, con2);
+    console.log("*ddddddddd*****", calculateNHS(con1, con2, duedate, startdate, salary));
+    setNhsdata(calculateNHS(con1, con2, duedate, startdate, salary));
   };
 
   return (
@@ -188,15 +191,15 @@ export default function NHS() {
                 </tr>
               </thead>
               <tbody>
-                {/* {smpdata.map((item, index) => (
+                {nhsdata.map((item, index) => (
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={index}>
-                    <td class="px-6 py-4">{item.Month}</td>
+                    <td class="px-6 py-4">{item["Month"]}</td>
                     <td class="px-6 py-4">{item["Regular Pay"]}</td>
-                    <td class="px-6 py-4">{item["SMP (90%)"]}</td>
-                    <td class="px-6 py-4">{item["SMP (£172.48)"]}</td>
-                    <td class="px-6 py-4">{parseFloat(parseFloat(item["SMP (£172.48)"]) + parseFloat(item["Regular Pay"]) + parseFloat(item["SMP (90%)"])).toFixed(2)}</td>
+                    <td class="px-6 py-4">{item["SMP"]}</td>
+                    <td class="px-6 py-4">{item["MA"]}</td>
+                    <td class="px-6 py-4">{item["Total"]}</td>
                   </tr>
-                ))} */}
+                ))}
               </tbody>
             </table>
         </div>
