@@ -15,8 +15,6 @@ const months = [
   "November",
   "December",
 ];
-const monthlyDays = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
 
 // Function to check the year is leap
 function isLeap(year) {
@@ -37,6 +35,8 @@ export function calculateSMPMonthlyBreackdown(dueDate, startDate, annualSalary) 
     // let relevantPeriodEnd = addDays(qualifyingWeekStart, - 1);
     // let relevantPeriodStart = addDays(relevantPeriodEnd, - 7 * 8);
   
+    const monthlyDays = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
     let dailySalary = annualSalary / 52 / 7;
     let monthlySalary = annualSalary / 12;
   
@@ -48,12 +48,10 @@ export function calculateSMPMonthlyBreackdown(dueDate, startDate, annualSalary) 
 
     let result = [{"Month" : months[startMonth - 1], "Regular Pay" : monthlySalary.toFixed(2), "SMP (90%)" : 0, "SMP (£172.48)" : 0}];
 
-    if (monthlyDays[2] < 29) {
-        if (startMonth > 2)
-            monthlyDays[2] += isLeap(secondLimitDate.getFullYear());
-        else
-            monthlyDays[2] += isLeap(firstLimitDate.getFullYear());
-    }
+    if (startMonth > 2)
+        monthlyDays[2] += isLeap(secondLimitDate.getFullYear());
+    else
+        monthlyDays[2] += isLeap(firstLimitDate.getFullYear());
 
     console.log(firstLimitDate, secondLimitDate, startDay);
   
@@ -70,7 +68,7 @@ export function calculateSMPMonthlyBreackdown(dueDate, startDate, annualSalary) 
         smp1 = dailySalary * (monthlyDays[startMonth] - startDay) * 0.9;
       }
       else {
-        if (iMonth < firstLimitDate.getMonth() + 1 && flag ) {
+        if (iMonth < firstLimitDate.getMonth() + 1 + 12 * (firstLimitDate.getMonth() < new Date(startDate).getMonth()) && flag) {
           smp1 = dailySalary * monthlyDays[iMonth] * 0.9;
           flag = false;
         }
