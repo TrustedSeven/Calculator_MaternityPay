@@ -1,36 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Navbar from "./navbar";
 
 const Input = () => {
-  const [state, setState] = useState({
-    title: "",
-    surname: "",
-    dob: "",
-    nationalInsuranceNumber: "",
-    address: "",
-    phoneNumber: "",
-    email: "",
-    specialDate: "",
-    employerAddress: "",
-    employerPhoneNumber: "",
-    employmentStartDate: "",
-    employmentEndDate: "",
-    lastPaymentNumber: "",
-    payFrequency: "",
-    anotherEmployer: "",
-  });
+  const [duedate, setDuedate] = useState("");
+  const [qualifyingweekstart, setQualifyingweekstart] = useState("");
+
+  useEffect(() => {
+    // setQualifyingweekstart((addDays(duedate, -7*15)));
+    const dateStr = addDays(duedate, -7*15);
+    const date = new Date(dateStr);
+
+    const year = date.getFullYear();
+    const month = date.toLocaleString("default", { month: "long" });
+    const day = date.getDate();
+
+    const simplifiedDateStr = `${month} ${day}, ${year}`;
+
+    setQualifyingweekstart(simplifiedDateStr);
+  }, [duedate]);
 
   const handleChange = (e) => {
-    setState({
-      ...state,
-      [e.target.name]: e.target.value,
-    });
+    //code to be inserted
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(state);
+    console.log("test");
   };
 
   return (
@@ -232,7 +228,10 @@ const Input = () => {
                     id="duedate"
                     name="duedate"
                     type="date"
-                    onChange={handleChange}
+                    onChange={(event) => {
+                      console.log(event.target.value);
+                      setDuedate(event.target.value);
+                    }}
                     className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                     placeholder="Baby duedate"
                   />
@@ -272,11 +271,9 @@ const Input = () => {
                   <input
                     id="qualifiedweekstart"
                     name="qualifiedweekstart"
-                    type="date"
-                    disabled={true}
-                    onChange={handleChange}
+                    type="text"
+                    value={qualifyingweekstart}
                     className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    placeholder="Special Date"
                   />
                   <p className="text-sm text-gray-500 mt-1">
                     What date does the 15th week before the week the baby is due
@@ -474,3 +471,9 @@ const Input = () => {
 };
 
 export default Input;
+
+const addDays = (date, days) => {
+  var result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+};
