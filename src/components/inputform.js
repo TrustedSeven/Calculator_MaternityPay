@@ -10,15 +10,8 @@ const Input = () => {
   const [suggestions, setSuggestions] = useState([]);
 
   const [payfrequency, setPayfrequency] = useState();
-  //   const [payother, setPayother] = useState(true);
   const handlePayFrequency = (event) => {
     setPayfrequency(event.target.value);
-    // if(event.target.value === "Other"){
-    //     setPayother(false);
-    // }
-    // else{
-    //     setPayother(true);
-    // }
   };
 
   const [otherpayfrequency, setOtherpayfrequency] = useState();
@@ -58,7 +51,6 @@ const Input = () => {
         const response = await axios.get(
           `https://api.getAddress.io/autocomplete/${inputAddress}?api-key=AaxzEUFc_0Wnvol9Jv52CA39839`
         );
-        console.log(response.data.suggestions, "88888888");
 
         setSuggestions(response.data.suggestions);
       } catch (error) {
@@ -72,14 +64,11 @@ const Input = () => {
   };
 
   const handleSuggestionSelect = (suggestion) => {
-    // Parse the address components and fill in the input fields
-    // with the corresponding values
     setAddress(suggestion);
     setSuggestions([]);
   };
 
   useEffect(() => {
-    // setQualifyingweekstart((addDays(duedate, -7*15)));
     const dateStr = addDays(duedate, -7 * 15);
     const date = new Date(dateStr);
 
@@ -96,6 +85,13 @@ const Input = () => {
     //code to be inserted
   };
 
+  const [step, setStep] = useState(1);
+  const handleStep = (e) => {
+    //code to be inserted
+    console.log(e.target.value)
+    setStep(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("test");
@@ -109,9 +105,66 @@ const Input = () => {
 
       <div className="min-h-screen bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-5xl bg-white rounded-lg shadow-md mt-5 mb-5 p-6">
-          <h2 className="text-3xl font-extrabold text-gray-800 mb-8">
-            Fill out your information
-          </h2>
+          <div>
+            <ol class="items-center w-full space-y-4 sm:flex sm:space-x-8 sm:space-y-0 flex justify-center">
+              <li class="flex items-center text-blue-600 dark:text-blue-500 space-x-2.5">
+                <button class={`w-10 h-10 rounded-full bg-blue-500 hover:bg-red-500 text-white ${step === "1" ? "bg-red-500" : ""}`} value="1" onClick={handleStep}>
+                  1
+                </button>
+              </li>
+              <li class="flex items-center text-gray-500 dark:text-gray-400 space-x-2.5">
+                <button class={`w-10 h-10 rounded-full bg-blue-500 hover:bg-red-500 text-white ${step === "2" ? "bg-red-500" : ""}`} value="2" onClick={handleStep}>
+                  2
+                </button>
+              </li>
+              <li class="flex items-center text-gray-500 dark:text-gray-400 space-x-2.5">
+                <button class={`w-10 h-10 rounded-full bg-blue-500 hover:bg-red-500 text-white ${step === "3" ? "bg-red-500" : ""}`} value="3" onClick={handleStep}>
+                  3
+                </button>
+              </li>
+              <li class="flex items-center text-gray-500 dark:text-gray-400 space-x-2.5">
+                <button class={`w-10 h-10 rounded-full bg-blue-500 hover:bg-red-500 text-white ${step === "4" ? "bg-red-500" : ""}`} value="4" onClick={handleStep}>
+                  4
+                </button>
+              </li>
+              <li class="flex items-center text-gray-500 dark:text-gray-400 space-x-2.5">
+                <button class={`w-10 h-10 rounded-full bg-blue-500 hover:bg-red-500 text-white ${step === "5" ? "bg-red-500" : ""}`} value="5" onClick={handleStep}>
+                  5
+                </button>
+              </li>
+              <li class="flex items-center text-gray-500 dark:text-gray-400 space-x-2.5">
+                <button class={`w-10 h-10 rounded-full bg-blue-500 hover:bg-red-500 text-white ${step === "6" ? "bg-red-500" : ""}`} value="6" onClick={handleStep}>
+                  6
+                </button>
+              </li>
+              <li class="flex items-center text-gray-500 dark:text-gray-400 space-x-2.5">
+                <button class={`w-10 h-10 rounded-full bg-blue-500 hover:bg-red-500 text-white ${step === "7" ? "bg-red-500" : ""}`} value="7" onClick={handleStep}>
+                  7
+                </button>
+              </li>
+              <li class="flex items-center text-gray-500 dark:text-gray-400 space-x-2.5">
+                <button class={`w-10 h-10 rounded-full bg-blue-500 hover:bg-red-500 text-white ${step === "8" ? "bg-red-500" : ""}`} value="8" onClick={handleStep}>
+                  8
+                </button>
+              </li>
+              <li class="flex items-center text-gray-500 dark:text-gray-400 space-x-2.5">
+                <button class={`w-10 h-10 rounded-full bg-blue-500 hover:bg-red-500 text-white ${step === "9" ? "bg-red-500" : ""}`} value="9" onClick={handleStep}>
+                  9
+                </button>
+              </li>
+              <li class="flex items-center text-gray-500 dark:text-gray-400 space-x-2.5">
+                <button class={`w-10 h-10 rounded-full bg-blue-500 hover:bg-red-500 text-white ${step === "10" ? "bg-red-500" : ""}`} value="10" onClick={handleStep}>
+                  10
+                </button>
+              </li>
+              <li class="flex items-center text-gray-500 dark:text-gray-400 space-x-2.5">
+                <button class={`w-10 h-10 rounded-full bg-blue-500 hover:bg-red-500 text-white ${step === "11" ? "bg-red-500" : ""}`} value="11" onClick={handleStep}>
+                  11
+                </button>
+              </li>
+            </ol>
+          </div>
+          <div></div>
 
           <div className="space-y-6">
             {/* Section 1: About you */}
@@ -1491,38 +1544,42 @@ const Input = () => {
                           </label>
                         </div>
                       </div>
-                      {(agencystill === "yes")&&<div>
-                        <label
-                          htmlFor="agencystillyes"
-                          className="block text-gray-700"
-                        >
-                          When did your contract start?
-                        </label>
-                        <input
-                          id="agencystillyes"
-                          name="agencystillyes"
-                          type="date"
-                          onChange={handleChange}
-                          className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                          placeholder=""
-                        />
-                      </div>}
-                      {(agencystill === "no")&&<div>
-                        <label
-                          htmlFor="agencystillno"
-                          className="block text-gray-700"
-                        >
-                          When did the contract end?
-                        </label>
-                        <input
-                          id="agencystillno"
-                          name="agencystillno"
-                          type="date"
-                          onChange={handleChange}
-                          className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                          placeholder=""
-                        />
-                      </div>}
+                      {agencystill === "yes" && (
+                        <div>
+                          <label
+                            htmlFor="agencystillyes"
+                            className="block text-gray-700"
+                          >
+                            When did your contract start?
+                          </label>
+                          <input
+                            id="agencystillyes"
+                            name="agencystillyes"
+                            type="date"
+                            onChange={handleChange}
+                            className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder=""
+                          />
+                        </div>
+                      )}
+                      {agencystill === "no" && (
+                        <div>
+                          <label
+                            htmlFor="agencystillno"
+                            className="block text-gray-700"
+                          >
+                            When did the contract end?
+                          </label>
+                          <input
+                            id="agencystillno"
+                            name="agencystillno"
+                            type="date"
+                            onChange={handleChange}
+                            className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder=""
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}
