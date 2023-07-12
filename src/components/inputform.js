@@ -2691,10 +2691,7 @@ const Input = () => {
                           />
                         </div>
                         <div>
-                          <label
-                            htmlFor="to2"
-                            className="block text-gray-700"
-                          >
+                          <label htmlFor="to2" className="block text-gray-700">
                             To
                           </label>
                           <input
@@ -2725,10 +2722,7 @@ const Input = () => {
                           />
                         </div>
                         <div>
-                          <label
-                            htmlFor="to3"
-                            className="block text-gray-700"
-                          >
+                          <label htmlFor="to3" className="block text-gray-700">
                             To
                           </label>
                           <input
@@ -2742,6 +2736,104 @@ const Input = () => {
                           />
                         </div>
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+            {step === "6" && (
+              <div>
+                <h3 className="text-2xl font-bold text-gray-700 mb-4">
+                  About your self-employed spouse or civil partner
+                </h3>
+                <div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        htmlFor="civiltitle"
+                        className="block text-gray-700"
+                      >
+                        Your spouse or civil partner’s title
+                      </label>
+                      <input
+                        id="civiltitle"
+                        name="civiltitle"
+                        type="text"
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Your spouse or civil partner’s title"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="civilname"
+                        className="block text-gray-700"
+                      >
+                        Your spouse or civil partner’s surname or family name,
+                        in full
+                      </label>
+                      <input
+                        id="civilname"
+                        name="civilname"
+                        type="text"
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Your spouse or civil partner’s surname or family name,
+                        in full"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="civiloname"
+                        className="block text-gray-700"
+                      >
+                        Your spouse or civil partner’s other names, in full
+                      </label>
+                      <input
+                        id="civiloname"
+                        name="civiloname"
+                        type="text"
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Your spouse or civil partner’s other names, in full"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="civilNI"
+                        className="block text-gray-700"
+                      >
+                        Your spouse or civil partner’s National Insurance number
+                      </label>
+                      <input
+                        id="civilNI"
+                        name="civilNI"
+                        type="text"
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Your spouse or civil partner’s National Insurance number"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="civiladdress"
+                        className="block text-gray-700"
+                      >
+                        Your spouse or civil partner’s address
+                      </label>
+                      <input
+                        id="civiladdress"
+                        name="civiladdress"
+                        type="text"
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Your spouse or civil partner’s address"
+                      />
                     </div>
                   </div>
                 </div>
