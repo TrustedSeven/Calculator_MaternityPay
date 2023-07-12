@@ -14,6 +14,12 @@ const Input = () => {
     setPayfrequency(event.target.value);
   };
 
+  const [opayfrequency, setOpayfrequency] = useState();
+  const handleOpayFrequency = (event) => {
+    setOpayfrequency(event.target.value);
+  };
+
+
   const [otherpayfrequency, setOtherpayfrequency] = useState();
   const otherhandlePayFrequency = (event) => {
     setOtherpayfrequency(event.target.value);
@@ -3258,6 +3264,676 @@ const Input = () => {
                       </label>
                     </div>
                   </div>
+                </div>
+              </div>
+            )}
+            {step === "9" && (
+              <div>
+                <h3 className="text-2xl font-bold text-gray-700 mb-4">
+                  About your spouse or civil partner’s self-employment
+                </h3>
+                <div>
+                  <div>
+                    <label htmlFor="mcselfdate" className="block text-gray-700">
+                      Did you spend any time abroad, during your Test Period
+                      (the dates you worked out at questions 19 and 20)? You do
+                      not need to tell us about holidays abroad.
+                    </label>
+                    <input
+                      id="timeabroad"
+                      name="timeabroad"
+                      type="text"
+                      onChange={handleChange}
+                      className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                      placeholder="Did you spend any time abroad, during your Test Period?"
+                    />
+                  </div>
+                  <div class="flex mt-5">
+                    <label
+                      htmlFor="overseasemploy"
+                      className="block text-gray-700"
+                    >
+                      Whilst abroad, were you employed there by an overseas
+                      employer?
+                    </label>
+                    <div class="flex items-center mr-4 ml-5">
+                      <input
+                        id="overseasemployyes-radio"
+                        type="radio"
+                        value="yes"
+                        name="overseasemploy-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="overseasemployyes-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Yes
+                      </label>
+                    </div>
+                    <div class="flex items-center mr-4">
+                      <input
+                        id="overseasemployno-radio"
+                        type="radio"
+                        value="no"
+                        name="overseasemploy-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="overseasemployno-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        No
+                      </label>
+                    </div>
+                  </div>
+                  <div class="flex mt-5">
+                    <label htmlFor="ukemployer" className="block text-gray-700">
+                      Whilst abroad, were you employed there by a UK employer?
+                    </label>
+                    <div class="flex items-center mr-4 ml-5">
+                      <input
+                        id="ukemployeryes-radio"
+                        type="radio"
+                        value="yes"
+                        name="ukemployer-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="ukemployeryes-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Yes
+                      </label>
+                    </div>
+                    <div class="flex items-center mr-4">
+                      <input
+                        id="ukemployerno-radio"
+                        type="radio"
+                        value="no"
+                        name="ukemployer-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="ukemployerno-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        No
+                      </label>
+                    </div>
+                  </div>
+                  <div class="flex mt-5">
+                    <label htmlFor="ukemployer" className="block text-gray-700">
+                      Whilst abroad, were you self-employed there?
+                    </label>
+                    <div class="flex items-center mr-4 ml-5">
+                      <input
+                        id="abroadselfyes-radio"
+                        type="radio"
+                        value="yes"
+                        name="abroadself-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="abroadselfyes-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Yes
+                      </label>
+                    </div>
+                    <div class="flex items-center mr-4">
+                      <input
+                        id="abroadselfno-radio"
+                        type="radio"
+                        value="no"
+                        name="abroadself-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="abroadselfno-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        No
+                      </label>
+                    </div>
+                  </div>
+                  <div class="flex mt-5">
+                    <label
+                      htmlFor="abroadspouse"
+                      className="block text-gray-700"
+                    >
+                      Whilst abroad, were you doing any unpaid work for your
+                      self-employed spouse or civil partner’s UK business?
+                    </label>
+                    <div class="flex items-center mr-4 ml-5">
+                      <input
+                        id="abroadspouseyes-radio"
+                        type="radio"
+                        value="yes"
+                        name="abroadspouse-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="abroadspouseyes-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Yes
+                      </label>
+                    </div>
+                    <div class="flex items-center mr-4">
+                      <input
+                        id="abroadspouseno-radio"
+                        type="radio"
+                        value="no"
+                        name="abroadspouse-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="abroadspouseno-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        No
+                      </label>
+                    </div>
+                  </div>
+                  <div class="flex mt-5">
+                    <label
+                      htmlFor="abroadfamily"
+                      className="block text-gray-700"
+                    >
+                      Whilst abroad, were you a member of a service family
+                      there?
+                    </label>
+                    <div class="flex items-center mr-4 ml-5">
+                      <input
+                        id="abroadfamilyyes-radio"
+                        type="radio"
+                        value="yes"
+                        name="abroadfamily-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="abroadfamilyyes-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Yes
+                      </label>
+                    </div>
+                    <div class="flex items-center mr-4">
+                      <input
+                        id="abroadfamilyno-radio"
+                        type="radio"
+                        value="no"
+                        name="abroadfamily-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="abroadfamilyno-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        No
+                      </label>
+                    </div>
+                  </div>
+                  <div class="flex mt-5">
+                    <label
+                      htmlFor="abroadbenefit"
+                      className="block text-gray-700"
+                    >
+                      Whilst abroad, were you getting any benefits in a foreign
+                      country?
+                    </label>
+                    <div class="flex items-center mr-4 ml-5">
+                      <input
+                        id="abroadbenefityes-radio"
+                        type="radio"
+                        value="yes"
+                        name="abroadbenefit-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="abroadbenefityes-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Yes
+                      </label>
+                    </div>
+                    <div class="flex items-center mr-4">
+                      <input
+                        id="abroadbenefitno-radio"
+                        type="radio"
+                        value="no"
+                        name="abroadbenefit-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="abroadbenefitno-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        No
+                      </label>
+                    </div>
+                  </div>
+                  <label
+                    htmlFor="abroadbenefit"
+                    className="block text-gray-700 mt-5"
+                  >
+                    Which countries did you spend time in?
+                  </label>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        htmlFor="mccountry"
+                        className="block text-gray-700"
+                      >
+                        Country1
+                      </label>
+                      <select
+                        id="country1"
+                        name="country1"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                      >
+                        <option>Select</option>
+                        <option>UK</option>
+                        <option>Germany</option>
+                        <option>Ukraine</option>
+                        <option>France</option>
+                        <option>Poland</option>
+                        <option>Portugal</option>
+                        <option>Italy</option>
+                        <option>Finland</option>
+                        <option>Latvia</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="mccountry"
+                        className="block text-gray-700"
+                      >
+                        Country2
+                      </label>
+                      <select
+                        id="country2"
+                        name="country2"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                      >
+                        <option>Select</option>
+                        <option>UK</option>
+                        <option>Germany</option>
+                        <option>Ukraine</option>
+                        <option>France</option>
+                        <option>Poland</option>
+                        <option>Portugal</option>
+                        <option>Italy</option>
+                        <option>Finland</option>
+                        <option>Latvia</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label htmlFor="from1" className="block text-gray-700">
+                        From
+                      </label>
+                      <input
+                        id="from1"
+                        name="from1"
+                        type="date"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder=""
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="from2" className="block text-gray-700">
+                        From
+                      </label>
+                      <input
+                        id="from2"
+                        name="from2"
+                        type="date"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder=""
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="to1" className="block text-gray-700">
+                        To
+                      </label>
+                      <input
+                        id="to1"
+                        name="to1"
+                        type="date"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder=""
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="to2" className="block text-gray-700">
+                        To
+                      </label>
+                      <input
+                        id="to2"
+                        name="to2"
+                        type="date"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="What was your sick reason?"
+                      />
+                    </div>
+                  </div>
+                  <label
+                    htmlFor="abroadbenefit"
+                    className="block text-gray-700 mt-5"
+                  >
+                    What periods did you pay National Insurance contributions
+                    for?
+                  </label>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="from1" className="block text-gray-700">
+                        From
+                      </label>
+                      <input
+                        id="from1"
+                        name="from1"
+                        type="date"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder=""
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="from2" className="block text-gray-700">
+                        From
+                      </label>
+                      <input
+                        id="from2"
+                        name="from2"
+                        type="date"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder=""
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="to1" className="block text-gray-700">
+                        To
+                      </label>
+                      <input
+                        id="to1"
+                        name="to1"
+                        type="date"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder=""
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="to2" className="block text-gray-700">
+                        To
+                      </label>
+                      <input
+                        id="to2"
+                        name="to2"
+                        type="date"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="What was your sick reason?"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4 mt-5">
+                    <div>
+                      <label htmlFor="to2" className="block text-gray-700">
+                        Employer's Name in Full
+                      </label>
+                      <input
+                        id="to2"
+                        name="to2"
+                        type="text"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Employer's Name in Full"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="to2" className="block text-gray-700">
+                        Employer’s address, in full
+                      </label>
+                      <input
+                        id="to2"
+                        name="to2"
+                        type="text"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Employer’s address, in full"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="to2" className="block text-gray-700">
+                        A phone number we can contact the employer on
+                      </label>
+                      <input
+                        id="to2"
+                        name="to2"
+                        type="number"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="A phone number we can contact the employer on"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="to2" className="block text-gray-700">
+                        What date did your employment start?
+                      </label>
+                      <input
+                        id="to2"
+                        name="to2"
+                        type="date"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="A phone number we can contact the employer on"
+                      />
+                    </div>
+                  </div>
+                  <div className="mt-5">
+                    <label
+                      htmlFor="anotherEmployer"
+                      className="block text-gray-700"
+                    >
+                      Has your employment ended?
+                    </label>
+                    <div class="flex mt-5">
+                      <div class="flex items-center mr-4">
+                        <input
+                          id="stopyes-radio"
+                          type="radio"
+                          value="yes"
+                          name="stop-group"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          for="stopyes-radio"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
+                          Yes
+                        </label>
+                        <div className="ml-5">
+                          <label
+                            htmlFor="employmentEndDate"
+                            className="block text-gray-700"
+                          >
+                            What date did the employment end?
+                          </label>
+                          <input
+                            id="stopyesdate"
+                            name="stopyesdate"
+                            type="date"
+                            onChange={handleChange}
+                            className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder=""
+                          />
+                        </div>
+                      </div>
+                      <div class="flex items-center mr-4">
+                        <input
+                          id="stopno-radio"
+                          type="radio"
+                          value="no"
+                          name="stop-group"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          for="stopno-radio"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
+                          No
+                        </label>
+                        <div className="ml-5">
+                          <label
+                            htmlFor="employmentEndDate"
+                            className="block text-gray-700"
+                          >
+                            what date do you plan to stop work to have the baby?
+                          </label>
+                          <input
+                            id="stopnodate"
+                            name="stopnodate"
+                            type="date"
+                            onChange={handleChange}
+                            className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder="Employment End Date"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="lastPaymentNumber"
+                      className="block text-gray-700 mt-5"
+                    >
+                      Payroll, employee, clock or works number
+                    </label>
+                    <input
+                      id="lastPaymentNumber"
+                      name="lastPaymentNumber"
+                      type="text"
+                      onChange={handleChange}
+                      className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                      placeholder="Last Payment, Employee, Clock, or Work Staff Number"
+                    />
+                  </div>
+                  <div>
+                      <label
+                        htmlFor="payFrequency"
+                        className="block text-gray-700"
+                      >
+                        How often were you normally paid?
+                      </label>
+                      <div class="flex mt-5">
+                        <div class="flex items-center mr-4">
+                          <input
+                            id="opayfrequencyweekly-radio"
+                            type="radio"
+                            value="Weekly"
+                            name="opayfrequency-group"
+                            checked={opayfrequency === "Weekly"}
+                            onChange={handleOpayFrequency}
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            for="opayfrequencyweekly-radio"
+                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >
+                            Weekly
+                          </label>
+                        </div>
+                        <div class="flex items-center mr-4">
+                          <input
+                            id="opayfrequencyfortnightly-radio"
+                            type="radio"
+                            value="Fortnightly"
+                            checked={opayfrequency === "Fortnightly"}
+                            onChange={handleOpayFrequency}
+                            name="opayfrequency-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            for="opayfrequencyfortnightly-radio"
+                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >
+                            Fortnightly
+                          </label>
+                        </div>
+                        <div class="flex items-center mr-4">
+                          <input
+                            id="opayfrequency4weeks-radio"
+                            type="radio"
+                            checked={opayfrequency === "Every 4 Weeks"}
+                            value="Every 4 Weeks"
+                            onChange={handleOpayFrequency}
+                            name="opayfrequency-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            for="opayfrequency4weeks-radio"
+                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >
+                            Every 4 Weeks
+                          </label>
+                        </div>
+                        <div class="flex items-center mr-4">
+                          <input
+                            id="opayfrequencymonthly-radio"
+                            type="radio"
+                            value="Monthly"
+                            checked={opayfrequency === "Monthly"}
+                            onChange={handleOpayFrequency}
+                            name="opayfrequency-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            for="opayfrequencymonthly-radio"
+                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >
+                            Monthly
+                          </label>
+                        </div>
+                        <div class="flex items-center mr-4">
+                          <input
+                            id="opayfrequencyother-radio"
+                            type="radio"
+                            value="Other"
+                            checked={opayfrequency === "Other"}
+                            onChange={handleOpayFrequency}
+                            name="opayfrequency-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            for="opayfrequencyother-radio"
+                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >
+                            Other
+                          </label>
+                        </div>
+                      </div>
+                      {opayfrequency === "Other" && (
+                        <input
+                          id="opayother"
+                          name="opayother"
+                          type="text"
+                          onChange={handleChange}
+                          className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                          placeholder="Please note your pay frequency"
+                        />
+                      )}
+                    </div>
                 </div>
               </div>
             )}
