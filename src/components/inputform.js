@@ -43,6 +43,26 @@ const Input = () => {
     setAgencystill(event.target.value);
   };
 
+  const [otheragency, setOtheragency] = useState();
+  const handleOtherAgency = (event) => {
+    setOtheragency(event.target.value);
+  };
+
+  const [asickpay, setAsickpay] = useState();
+  const handleAsickpay = (event) => {
+    setAsickpay(event.target.value);
+  };
+
+  const [aprelated, setAprelated] = useState();
+  const handleAprelated = (event) => {
+    setAprelated(event.target.value);
+  };
+
+  const [stillself, setStillself] = useState();
+  const handleStillself = (event) => {
+    setStillself(event.target.value);
+  };
+
   const handleAddressChange = async (event) => {
     const inputAddress = event.target.value;
 
@@ -85,7 +105,7 @@ const Input = () => {
     //code to be inserted
   };
 
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState("1");
   const handleStep = (e) => {
     //code to be inserted
     console.log(e.target.value);
@@ -1499,7 +1519,8 @@ const Input = () => {
                     htmlFor="anotherEmployer"
                     className="block text-gray-700"
                   >
-                    Do you have another employer to tell us about?
+                    Do you or have you worked for an agency within your Test
+                    Period?
                   </label>
                   <div class="flex mt-5">
                     <div class="flex items-center mr-4">
@@ -1683,8 +1704,623 @@ const Input = () => {
                           </div>
                         )}
                       </div>
+                      <div>
+                        <label
+                          htmlFor="otheragency"
+                          className="block text-gray-700"
+                        >
+                          Do you have another agency to tell us about?
+                        </label>
+                        <div class="flex items-center mr-4">
+                          <input
+                            id="otheragencyyes-radio"
+                            type="radio"
+                            value="yes"
+                            checked={otheragency === "yes"}
+                            onChange={handleOtherAgency}
+                            name="otheragency-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            for="otheragencyyes-radio"
+                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >
+                            Yes
+                          </label>
+                        </div>
+                        <div class="flex items-center mr-4">
+                          <input
+                            id="otheragencyno-radio"
+                            type="radio"
+                            value="no"
+                            checked={otheragency === "no"}
+                            onChange={handleOtherAgency}
+                            name="otheragency-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            for="aotheragencyno-radio"
+                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >
+                            No
+                          </label>
+                        </div>
+                      </div>
+                      {otheragency === "yes" && (
+                        <div>
+                          <div className="grid grid-cols-2 gap-4 mt-5">
+                            <div>
+                              <label
+                                htmlFor="otheragencyname"
+                                className="block text-gray-700"
+                              >
+                                Agency’s name, in full
+                              </label>
+                              <input
+                                id="otheragencyname"
+                                name="otheragencyname"
+                                type="text"
+                                onChange={handleChange}
+                                className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                placeholder="agency name"
+                              />
+                            </div>
+                            <div>
+                              <label
+                                htmlFor="otheragencyaddress"
+                                className="block text-gray-700"
+                              >
+                                Agency’s address, in full
+                              </label>
+                              <input
+                                id="otheragencyaddress"
+                                name="otheragencyaddress"
+                                type="text"
+                                onChange={handleChange}
+                                className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                placeholder="agency address"
+                              />
+                            </div>
+                            <div>
+                              <label
+                                htmlFor="otheragencyphone"
+                                className="block text-gray-700"
+                              >
+                                Agency’s phone number
+                              </label>
+                              <input
+                                id="otheragencyphone"
+                                name="otheragencyphone"
+                                type="number"
+                                onChange={handleChange}
+                                className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                placeholder="agency phone"
+                              />
+                            </div>
+                            <div>
+                              <label
+                                htmlFor="otheragencyregisterdate"
+                                className="block text-gray-700"
+                              >
+                                What date did you register with the Agency?
+                              </label>
+                              <input
+                                id="otheragencyregisterdate"
+                                name="otheragencyregisterdate"
+                                type="date"
+                                onChange={handleChange}
+                                className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                placeholder="agency register date"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      <div>
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <label
+                              htmlFor="employmentEndDate"
+                              className="block text-gray-700"
+                            >
+                              What date did you last work?
+                            </label>
+                            <input
+                              id="agencystopyesdate"
+                              name="agencystopyesdate"
+                              type="date"
+                              onChange={handleChange}
+                              className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                              placeholder=""
+                            />
+                          </div>
+                        </div>
+                        <div className="mt-5">
+                          <label
+                            htmlFor="anotherEmployer"
+                            className="block text-gray-700"
+                          >
+                            Did you get any sick pay after you last worked?
+                          </label>
+                          <div class="flex mt-5">
+                            <div class="flex items-center mr-4">
+                              <input
+                                id="asickyes-radio"
+                                type="radio"
+                                value="yes"
+                                checked={asickpay === "yes"}
+                                onChange={handleAsickpay}
+                                name="asick-group"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                              />
+                              <label
+                                for="asickyes-radio"
+                                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                              >
+                                Yes
+                              </label>
+                            </div>
+                            <div class="flex items-center mr-4">
+                              <input
+                                id="asickno-radio"
+                                type="radio"
+                                value="no"
+                                checked={asickpay === "no"}
+                                onChange={handleAsickpay}
+                                name="asick-group"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                              />
+                              <label
+                                for="asickno-radio"
+                                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                              >
+                                No
+                              </label>
+                            </div>
+                          </div>
+                          {asickpay === "yes" && (
+                            <div className="mt-5">
+                              <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                  <label
+                                    htmlFor="sickfrom"
+                                    className="block text-gray-700"
+                                  >
+                                    From
+                                  </label>
+                                  <input
+                                    id="sickfrom"
+                                    name="sickfrom"
+                                    type="date"
+                                    onChange={handleChange}
+                                    className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                    placeholder=""
+                                  />
+                                </div>
+                                <div>
+                                  <label
+                                    htmlFor="sickto"
+                                    className="block text-gray-700"
+                                  >
+                                    To
+                                  </label>
+                                  <input
+                                    id="sickto"
+                                    name="sickto"
+                                    type="date"
+                                    onChange={handleChange}
+                                    className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                    placeholder=""
+                                  />
+                                </div>
+                                <div class="flex mt-5">
+                                  <label
+                                    htmlFor="anotherEmployer"
+                                    className="block text-gray-700"
+                                  >
+                                    Was it pregnancy related?
+                                  </label>
+                                  <div class="flex items-center mr-4 ml-5">
+                                    <input
+                                      id="aprelatedyes-radio"
+                                      type="radio"
+                                      value="yes"
+                                      checked={aprelated === "yes"}
+                                      onChange={handleAprelated}
+                                      name="aprelated-group"
+                                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                    />
+                                    <label
+                                      for="aprelatedyes-radio"
+                                      class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                    >
+                                      Yes
+                                    </label>
+                                  </div>
+                                  <div class="flex items-center mr-4">
+                                    <input
+                                      id="aprelatedno-radio"
+                                      type="radio"
+                                      value="no"
+                                      checked={aprelated === "no"}
+                                      onChange={handleAprelated}
+                                      name="aprelated-group"
+                                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                    />
+                                    <label
+                                      for="aprelatedno-radio"
+                                      class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                    >
+                                      No
+                                    </label>
+                                  </div>
+                                </div>
+                                {aprelated === "no" && (
+                                  <div>
+                                    <label
+                                      htmlFor="surname"
+                                      className="block text-gray-700"
+                                    >
+                                      What was the reason?
+                                    </label>
+                                    <input
+                                      id="reason"
+                                      name="reason"
+                                      type="text"
+                                      onChange={handleChange}
+                                      className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                      placeholder="What was your sick reason?"
+                                    />
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                        <div className="mt-5">
+                          <label
+                            htmlFor="anotherEmployer"
+                            className="block text-gray-700"
+                          >
+                            Have you stopped work to have the baby?
+                          </label>
+                          <div class="flex mt-5">
+                            <div class="flex items-center mr-4">
+                              <input
+                                id="stopyes-radio"
+                                type="radio"
+                                value="yes"
+                                name="stop-group"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                              />
+                              <label
+                                for="stopyes-radio"
+                                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                              >
+                                Yes
+                              </label>
+                              <div className="ml-5">
+                                <label
+                                  htmlFor="employmentEndDate"
+                                  className="block text-gray-700"
+                                >
+                                  What date did you last work?
+                                </label>
+                                <input
+                                  id="stopyesdate"
+                                  name="stopyesdate"
+                                  type="date"
+                                  onChange={handleChange}
+                                  className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                  placeholder=""
+                                />
+                              </div>
+                            </div>
+                            <div class="flex items-center mr-4">
+                              <input
+                                id="stopno-radio"
+                                type="radio"
+                                value="no"
+                                name="stop-group"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                              />
+                              <label
+                                for="stopno-radio"
+                                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                              >
+                                No
+                              </label>
+                              <div className="ml-5">
+                                <label
+                                  htmlFor="employmentEndDate"
+                                  className="block text-gray-700"
+                                >
+                                  What date do you plan to stop work?
+                                </label>
+                                <input
+                                  id="stopnodate"
+                                  name="stopnodate"
+                                  type="date"
+                                  onChange={handleChange}
+                                  className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                  placeholder="Employment End Date"
+                                />
+                              </div>
+                            </div>
+                            <div>
+                              <label
+                                htmlFor="mastart"
+                                className="block text-gray-700"
+                              >
+                                What date do you want your Maternity Allowance
+                                payments to start?
+                              </label>
+                              <input
+                                id="mastart"
+                                name="mastart"
+                                type="date"
+                                onChange={handleChange}
+                                required
+                                className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                placeholder=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   )}
+                </div>
+              </div>
+            )}
+            {step === "4" && (
+              <div>
+                <h3 className="text-2xl font-bold text-gray-700 mb-4">
+                  About Self-Employment in Your Test Period
+                </h3>
+                <div>
+                  <div>
+                    <label
+                      htmlFor="specialDate"
+                      className="block text-gray-700"
+                    >
+                      Are you or were you self-employed within your Test Period?
+                    </label>
+                    <div class="flex mt-5">
+                      <div class="flex items-center mr-4">
+                        <input
+                          id="selftestyes-radio"
+                          type="radio"
+                          value=""
+                          name="selftest-group"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          for="selftestyes-radio"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
+                          Yes
+                        </label>
+                      </div>
+                      <div class="flex items-center mr-4">
+                        <input
+                          id="selftestno-radio"
+                          type="radio"
+                          value=""
+                          name="selftest-group"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          for="selftestno-radio"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
+                          No
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4 mt-5">
+                    <div>
+                      <label
+                        htmlFor="selftestdate"
+                        className="block text-gray-700"
+                      >
+                        What date did you become registered as self-employed?
+                      </label>
+                      <input
+                        id="selftestdate"
+                        name="selftestdate"
+                        type="date"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+                  <div className="mt-5">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label
+                          htmlFor="sickfrom"
+                          className="block text-gray-700"
+                        >
+                          From
+                        </label>
+                        <input
+                          id="sickfrom"
+                          name="sickfrom"
+                          type="date"
+                          onChange={handleChange}
+                          className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                          placeholder=""
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="sickto" className="block text-gray-700">
+                          To
+                        </label>
+                        <input
+                          id="sickto"
+                          name="sickto"
+                          type="date"
+                          onChange={handleChange}
+                          required
+                          className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                          placeholder=""
+                        />
+                      </div>
+                      <div class="flex mt-5">
+                        <label
+                          htmlFor="anotherEmployer"
+                          className="block text-gray-700"
+                        >
+                          Are you still self-employed?
+                        </label>
+                        <div class="flex items-center mr-4 ml-5">
+                          <input
+                            id="stillselfyes-radio"
+                            type="radio"
+                            value="yes"
+                            checked={stillself === "yes"}
+                            onChange={handleStillself}
+                            name="stillself-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            for="stillselfyes-radio"
+                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >
+                            Yes
+                          </label>
+                        </div>
+                        <div class="flex items-center mr-4">
+                          <input
+                            id="stillselfno-radio"
+                            type="radio"
+                            value="no"
+                            checked={stillself === "no"}
+                            onChange={handleStillself}
+                            name="stillself-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            for="stillselfno-radio"
+                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >
+                            No
+                          </label>
+                        </div>
+                      </div>
+                      {stillself === "no" && (
+                        <div>
+                          <label
+                            htmlFor="surname"
+                            className="block text-gray-700"
+                          >
+                            What date did your self employment end?
+                          </label>
+                          <input
+                            id="reason"
+                            name="reason"
+                            type="date"
+                            onChange={handleChange}
+                            className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder="What was your sick reason?"
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="mt-5">
+                    <label
+                      htmlFor="anotherEmployer"
+                      className="block text-gray-700"
+                    >
+                      Have you stopped work to have the baby?
+                    </label>
+                    <div class="flex mt-5">
+                      <div class="flex items-center mr-4">
+                        <input
+                          id="stopyes-radio"
+                          type="radio"
+                          value="yes"
+                          name="stop-group"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          for="stopyes-radio"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
+                          Yes
+                        </label>
+                        <div className="ml-5">
+                          <label
+                            htmlFor="employmentEndDate"
+                            className="block text-gray-700"
+                          >
+                            What date did you last work?
+                          </label>
+                          <input
+                            id="stopyesdate"
+                            name="stopyesdate"
+                            type="date"
+                            onChange={handleChange}
+                            className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder=""
+                          />
+                        </div>
+                      </div>
+                      <div class="flex items-center mr-4">
+                        <input
+                          id="stopno-radio"
+                          type="radio"
+                          value="no"
+                          name="stop-group"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          for="stopno-radio"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
+                          No
+                        </label>
+                        <div className="ml-5">
+                          <label
+                            htmlFor="employmentEndDate"
+                            className="block text-gray-700"
+                          >
+                            What date do you plan to stop work?
+                          </label>
+                          <input
+                            id="stopnodate"
+                            name="stopnodate"
+                            type="date"
+                            onChange={handleChange}
+                            className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder="Employment End Date"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="mastart"
+                          className="block text-gray-700"
+                        >
+                          What date do you want your Maternity Allowance
+                          payments to start?
+                        </label>
+                        <input
+                          id="mastart"
+                          name="mastart"
+                          type="date"
+                          onChange={handleChange}
+                          required
+                          className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                          placeholder=""
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
