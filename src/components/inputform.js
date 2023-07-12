@@ -163,7 +163,7 @@ const Input = () => {
         <Navbar />
       </div>
 
-      <div className="min-h-screen bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gradient-to-r from-indigo-600 to-purple-600 flex justify-center px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-5xl bg-white rounded-lg shadow-md mt-5 mb-5 p-6">
           <div>
             <ol class="items-center w-full space-y-4 sm:flex sm:space-x-8 sm:space-y-0 flex justify-center">
@@ -4028,6 +4028,153 @@ const Input = () => {
                       </div>
                     </div>
                   )}
+                </div>
+              </div>
+            )}
+            {step === "11" && (
+              <div>
+                <h3 className="text-2xl font-bold text-gray-700 mb-4">
+                  About Paying You
+                </h3>
+                <div>
+                  <div class="flex mt-5">
+                    <label
+                      htmlFor="otherbenefit"
+                      className="block text-gray-700"
+                    >
+                      How often do you want us to pay your Maternity Allowance?
+                    </label>
+                    <div class="flex items-center mr-4 ml-5">
+                      <input
+                        id="payingfreqyes-radio"
+                        type="radio"
+                        value="yes"
+                        name="payingfreq-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="payingfreqyes-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Every 2 weeks
+                      </label>
+                    </div>
+                    <div class="flex items-center mr-4">
+                      <input
+                        id="payingfreqno-radio"
+                        type="radio"
+                        value="no"
+                        name="payingfreq-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="payingfreqno-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Every 4 weeks
+                      </label>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4 mt-5">
+                    <div>
+                      <label
+                        htmlFor="lastPaymentNumber"
+                        className="block text-gray-700"
+                      >
+                        Name of the account holder
+                      </label>
+                      <input
+                        id="lastPaymentNumber"
+                        name="lastPaymentNumber"
+                        type="text"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Name of the account holder"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="lastPaymentNumber"
+                        className="block text-gray-700"
+                      >
+                        Name of the bank or building society
+                      </label>
+                      <input
+                        id="lastPaymentNumber"
+                        name="lastPaymentNumber"
+                        type="text"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Name of the bank or building society"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="lastPaymentNumber"
+                        className="block text-gray-700"
+                      >
+                        Sort code
+                      </label>
+                      <input
+                        id="lastPaymentNumber"
+                        name="lastPaymentNumber"
+                        type="text"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Sort code"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="lastPaymentNumber"
+                        className="block text-gray-700"
+                      >
+                        Account number
+                      </label>
+                      <input
+                        id="lastPaymentNumber"
+                        name="lastPaymentNumber"
+                        type="text"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Account number"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="lastPaymentNumber"
+                        className="block text-gray-700"
+                      >
+                        Building society roll or reference number
+                      </label>
+                      <input
+                        id="lastPaymentNumber"
+                        name="lastPaymentNumber"
+                        type="text"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Building society roll or reference number"
+                      />
+                    </div>
+                  </div>
+                  <div className="mt-5">
+                    <div class="flex items-center pl-3">
+                      <input
+                        id="vue-checkbox"
+                        type="checkbox"
+                        value=""
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                      />
+                      <label
+                        for="vue-checkbox"
+                        class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        You may get other benefits and entitlements that we do
+                        not pay into an account. If you want us to pay your
+                        other benefits into this account, tick the box.
+                      </label>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
