@@ -63,6 +63,16 @@ const Input = () => {
     setStillself(event.target.value);
   };
 
+  const [civilselfstop, setCivilselfstop] = useState();
+  const handleCivilselfstop = (event) => {
+    setCivilselfstop(event.target.value);
+  };
+
+  const [civilsickrel, setCivilsickrel] = useState();
+  const handleCivilsickrel = (event) => {
+    setCivilsickrel(event.target.value);
+  };
+
   const handleAddressChange = async (event) => {
     const inputAddress = event.target.value;
 
@@ -2318,6 +2328,419 @@ const Input = () => {
                           className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                           placeholder=""
                         />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+            {step === "5" && (
+              <div>
+                <h3 className="text-2xl font-bold text-gray-700 mb-4">
+                  About unpaid work for your self-employed spouse or civil
+                  partner’s business in your Test Period
+                </h3>
+                <div>
+                  <div>
+                    <label
+                      htmlFor="specialDate"
+                      className="block text-gray-700"
+                    >
+                      Are you or were you doing any unpaid work for your
+                      self-employed spouse or civil partner’s business in your
+                      Test Period?
+                    </label>
+                    <div class="flex mt-5">
+                      <div class="flex items-center mr-4">
+                        <input
+                          id="civiltestyes-radio"
+                          type="radio"
+                          value=""
+                          name="civiltest-group"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          for="civiltestyes-radio"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
+                          Yes
+                        </label>
+                      </div>
+                      <div class="flex items-center mr-4">
+                        <input
+                          id="civiltestno-radio"
+                          type="radio"
+                          value=""
+                          name="civiltest-group"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          for="civiltestno-radio"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
+                          No
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="civiltestunpaid"
+                        className="block text-gray-700 mt-5"
+                      >
+                        On what date did you start doing any unpaid work for
+                        your self-employed spouse or civil partner’s business?
+                      </label>
+                      <input
+                        id="civiltestunpaid"
+                        name="civiltestunpaid"
+                        type="date"
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder=""
+                      />
+                    </div>
+                    <div class="flex mt-5">
+                      <label
+                        htmlFor="anotherEmployer"
+                        className="block text-gray-700"
+                      >
+                        Have you stopped doing any unpaid work for your
+                        self-employed spouse or civil partner’s business?
+                      </label>
+                      <div class="flex items-center mr-4 ml-5">
+                        <input
+                          id="civilselfstopyes-radio"
+                          type="radio"
+                          value="yes"
+                          checked={civilselfstop === "yes"}
+                          onChange={handleCivilselfstop}
+                          name="civilselfstop-group"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          for="civilselfstopyes-radio"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
+                          Yes
+                        </label>
+                      </div>
+                      <div class="flex items-center mr-4">
+                        <input
+                          id="civilselfstopno-radio"
+                          type="radio"
+                          value="no"
+                          checked={civilselfstop === "no"}
+                          onChange={handleCivilselfstop}
+                          name="civilselfstop-group"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          for="civilselfstopno-radio"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
+                          No
+                        </label>
+                      </div>
+                    </div>
+                    {civilselfstop === "yes" && (
+                      <div>
+                        <label
+                          htmlFor="surname"
+                          className="block text-gray-700"
+                        >
+                          What date did your self employment end?
+                        </label>
+                        <input
+                          id="reason"
+                          name="reason"
+                          type="date"
+                          onChange={handleChange}
+                          className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                          placeholder="What was your sick reason?"
+                        />
+                      </div>
+                    )}
+                    <div className="mt-5">
+                      <label
+                        htmlFor="specialDate"
+                        className="block text-gray-700"
+                      >
+                        Did you stop doing any unpaid work for your
+                        self-employed spouse or civil partner’s business due to
+                        your pregnancy?
+                      </label>
+                      <div class="flex">
+                        <div class="flex items-center mr-4 mt-5">
+                          <input
+                            id="civilstoppregyes-radio"
+                            type="radio"
+                            value=""
+                            name="civilstoppreg-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            for="civilstoppregyes-radio"
+                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >
+                            Yes
+                          </label>
+                        </div>
+                        <div class="flex items-center mr-4 mt-5">
+                          <input
+                            id="civilstoppregno-radio"
+                            type="radio"
+                            value=""
+                            name="civilstoppreg-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            for="civilstoppregno-radio"
+                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >
+                            No
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-5">
+                      <label
+                        htmlFor="specialDate"
+                        className="block text-gray-700"
+                      >
+                        Did you stop doing any unpaid work for your
+                        self-employed spouse or civil partner’s business due to
+                        sickness?
+                      </label>
+                      <div class="flex">
+                        <div class="flex items-center mr-4 mt-5">
+                          <input
+                            id="civilstopsickyes-radio"
+                            type="radio"
+                            value="yes"
+                            checked={civilsickrel === "yes"}
+                            onChange={handleCivilsickrel}
+                            name="civilstopsick-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            for="civilstopsickyes-radio"
+                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >
+                            Yes
+                          </label>
+                        </div>
+                        <div class="flex items-center mr-4 mt-5">
+                          <input
+                            id="civilstopsickno-radio"
+                            type="radio"
+                            value="no"
+                            checked={civilsickrel === "no"}
+                            onChange={handleCivilsickrel}
+                            name="civilstopsick-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            for="civilstopsickno-radio"
+                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >
+                            No
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    {civilsickrel === "yes" && (
+                      <div className="mt-5">
+                        <label
+                          htmlFor="specialDate"
+                          className="block text-gray-700"
+                        >
+                          Was this sickness related to your pregnancy?
+                        </label>
+                        <div class="flex">
+                          <div class="flex items-center mr-4 mt-5">
+                            <input
+                              id="civilstopsickrelyes-radio"
+                              type="radio"
+                              value="yes"
+                              name="civilstopsickrel-group"
+                              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                            <label
+                              for="civilstopsickrelyes-radio"
+                              class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                            >
+                              Yes
+                            </label>
+                          </div>
+                          <div class="flex items-center mr-4 mt-5">
+                            <input
+                              id="civilstopsickrelno-radio"
+                              type="radio"
+                              value="no"
+                              name="civilstopsickrel-group"
+                              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                            <label
+                              for="civilstopsickrelno-radio"
+                              class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                            >
+                              No
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    <div>
+                      <label
+                        htmlFor="civilstopplan"
+                        className="block text-gray-700 mt-5"
+                      >
+                        If you have not stopped yet, on what date do you plan to
+                        stop doing any unpaid work for your self-employed spouse
+                        or civil partner’s business?
+                      </label>
+                      <input
+                        id="civilstopplan"
+                        name="civilstopplan"
+                        type="date"
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder=""
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="civilduty"
+                        className="block text-gray-700 mt-5"
+                      >
+                        What duties or activities did you or do you do to
+                        support your self-employed spouse or civil partner’s
+                        business?
+                      </label>
+                      <input
+                        id="civilduty"
+                        name="civilduty"
+                        type="text"
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Your duties"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="civilduty"
+                        className="block text-gray-700 mt-5"
+                      >
+                        Tell us what dates you did unpaid work for your
+                        self-employed spouse or civil partner’s business during
+                        your Test Period
+                      </label>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <label
+                            htmlFor="from1"
+                            className="block text-gray-700"
+                          >
+                            From
+                          </label>
+                          <input
+                            id="from1"
+                            name="from1"
+                            type="date"
+                            onChange={handleChange}
+                            required
+                            className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder=""
+                          />
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="mastart"
+                            className="block text-gray-700"
+                          >
+                            To
+                          </label>
+                          <input
+                            id="to1"
+                            name="to1"
+                            type="date"
+                            onChange={handleChange}
+                            required
+                            className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder=""
+                          />
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="from2"
+                            className="block text-gray-700"
+                          >
+                            From
+                          </label>
+                          <input
+                            id="from2"
+                            name="from2"
+                            type="date"
+                            onChange={handleChange}
+                            required
+                            className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder=""
+                          />
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="to2"
+                            className="block text-gray-700"
+                          >
+                            To
+                          </label>
+                          <input
+                            id="to2"
+                            name="to2"
+                            type="date"
+                            onChange={handleChange}
+                            required
+                            className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder=""
+                          />
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="from3"
+                            className="block text-gray-700"
+                          >
+                            From
+                          </label>
+                          <input
+                            id="from3"
+                            name="from3"
+                            type="date"
+                            onChange={handleChange}
+                            required
+                            className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder=""
+                          />
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="to3"
+                            className="block text-gray-700"
+                          >
+                            To
+                          </label>
+                          <input
+                            id="to3"
+                            name="to3"
+                            type="date"
+                            onChange={handleChange}
+                            required
+                            className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder=""
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
