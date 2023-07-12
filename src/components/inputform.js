@@ -74,9 +74,24 @@ const Input = () => {
   };
 
   const [mcend, setMcend] = useState();
-  const handleMcend = (event) =>{
+  const handleMcend = (event) => {
     setMcend(event.target.value);
-  }
+  };
+
+  const [hrmc, setHrmc] = useState();
+  const handleHrmc = (event) => {
+    setHrmc(event.target.value);
+  };
+
+  const [spousestill, setSpousestill] = useState();
+  const handleSpousestill = (event) => {
+    setSpousestill(event.target.value);
+  };
+
+  const [spouseemail, setSpouseemail] = useState();
+  const handleSpouseemail = (event) => {
+    setSpouseemail(event.target.value);
+  };
 
   const handleAddressChange = async (event) => {
     const inputAddress = event.target.value;
@@ -2885,65 +2900,364 @@ const Input = () => {
                     </select>
                   </div>
                   <div class="flex mt-5">
-                        <label
-                          htmlFor="anotherEmployer"
-                          className="block text-gray-700"
-                        >
-                          Has your marriage ended in divorce or has your civil partnership been dissolved?
-                        </label>
-                        <div class="flex items-center mr-4 ml-5">
-                          <input
-                            id="mcendyes-radio"
-                            type="radio"
-                            value="yes"
-                            checked={mcend === "yes"}
-                            onChange={handleMcend}
-                            name="mcend-group"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            for="mcendyes-radio"
-                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                          >
-                            Yes
-                          </label>
-                        </div>
-                        <div class="flex items-center mr-4">
-                          <input
-                            id="mcendno-radio"
-                            type="radio"
-                            value="no"
-                            checked={mcend === "no"}
-                            onChange={handleMcend}
-                            name="mcend-group"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            for="mcendno-radio"
-                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                          >
-                            No
-                          </label>
-                        </div>
-                      </div>
-                      {mcend === "yes" && (
-                        <div>
-                          <label
-                            htmlFor="mcenddate"
-                            className="block text-gray-700"
-                          >
-                            What date did it end or dissolve?
-                          </label>
-                          <input
-                            id="mcenddate"
-                            name="mcenddate"
-                            type="date"
-                            onChange={handleChange}
-                            className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                            placeholder="What date did it end or dissolve?"
-                          />
-                        </div>
-                      )}
+                    <label
+                      htmlFor="anotherEmployer"
+                      className="block text-gray-700"
+                    >
+                      Has your marriage ended in divorce or has your civil
+                      partnership been dissolved?
+                    </label>
+                    <div class="flex items-center mr-4 ml-5">
+                      <input
+                        id="mcendyes-radio"
+                        type="radio"
+                        value="yes"
+                        checked={mcend === "yes"}
+                        onChange={handleMcend}
+                        name="mcend-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="mcendyes-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Yes
+                      </label>
+                    </div>
+                    <div class="flex items-center mr-4">
+                      <input
+                        id="mcendno-radio"
+                        type="radio"
+                        value="no"
+                        checked={mcend === "no"}
+                        onChange={handleMcend}
+                        name="mcend-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="mcendno-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        No
+                      </label>
+                    </div>
+                  </div>
+                  {mcend === "yes" && (
+                    <div>
+                      <label
+                        htmlFor="mcenddate"
+                        className="block text-gray-700"
+                      >
+                        What date did it end or dissolve?
+                      </label>
+                      <input
+                        id="mcenddate"
+                        name="mcenddate"
+                        type="date"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="What date did it end or dissolve?"
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+            {step === "8" && (
+              <div>
+                <h3 className="text-2xl font-bold text-gray-700 mb-4">
+                  About your spouse or civil partner’s self-employment
+                </h3>
+                <div>
+                  <div>
+                    <label htmlFor="mcselfdate" className="block text-gray-700">
+                      What date did your spouse or civil partner become
+                      self-employed?
+                    </label>
+                    <input
+                      id="mcselfdate"
+                      name="mcselfdate"
+                      type="date"
+                      onChange={handleChange}
+                      className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                      placeholder="What date did your spouse or civil partner become self-employed?"
+                    />
+                  </div>
+                  <div class="flex mt-5">
+                    <label htmlFor="HMRC" className="block text-gray-700">
+                      Is your spouse or civil partner registered as
+                      self-employed with HM Revenue & Customs (HMRC)?
+                    </label>
+                    <div class="flex items-center mr-4 ml-5">
+                      <input
+                        id="HMRCyes-radio"
+                        type="radio"
+                        value="yes"
+                        checked={hrmc === "yes"}
+                        onChange={handleHrmc}
+                        name="HMRC-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="HMRCyes-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Yes
+                      </label>
+                    </div>
+                    <div class="flex items-center mr-4">
+                      <input
+                        id="HMRCno-radio"
+                        type="radio"
+                        value="no"
+                        checked={hrmc === "no"}
+                        onChange={handleHrmc}
+                        name="HMRC-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="HMRCno-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        No
+                      </label>
+                    </div>
+                  </div>
+                  {hrmc === "yes" && (
+                    <div>
+                      <label
+                        htmlFor="mcenddate"
+                        className="block text-gray-700 mt-5"
+                      >
+                        Tell us their registration number or Unique Tax
+                        Reference number?
+                      </label>
+                      <input
+                        id="hrmc"
+                        name="hrmc"
+                        type="text"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="What date did it end or dissolve?"
+                      />
+                    </div>
+                  )}
+                  <div class="flex mt-5">
+                    <label htmlFor="HMRC" className="block text-gray-700">
+                      Is your spouse or civil partner still registered as self
+                      employed?
+                    </label>
+                    <div class="flex items-center mr-4 ml-5">
+                      <input
+                        id="spousestillyes-radio"
+                        type="radio"
+                        value="yes"
+                        checked={spousestill === "yes"}
+                        onChange={handleSpousestill}
+                        name="spousestill-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="spousestillyes-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Yes
+                      </label>
+                    </div>
+                    <div class="flex items-center mr-4">
+                      <input
+                        id="spousestillno-radio"
+                        type="radio"
+                        value="no"
+                        checked={spousestill === "no"}
+                        onChange={handleSpousestill}
+                        name="spousestill-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="spousestillno-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        No
+                      </label>
+                    </div>
+                  </div>
+                  {spousestill === "no" && (
+                    <div>
+                      <label
+                        htmlFor="spousestill"
+                        className="block text-gray-700 mt-5"
+                      >
+                        What date did they end their registered self-employment
+                        with HMRC?
+                      </label>
+                      <input
+                        id="spousestill"
+                        name="spousestill"
+                        type="date"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="What date did they end their registered self-employment with HMRC?"
+                      />
+                    </div>
+                  )}
+                  <label className="block text-gray-700 mt-5">
+                    What is or was the full name and address of the business of
+                    your self-employed spouse or civil partner?
+                  </label>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        htmlFor="spousestill"
+                        className="block text-gray-700 mt-5"
+                      >
+                        Name
+                      </label>
+                      <input
+                        id="spousestill"
+                        name="spousestill"
+                        type="TEXT"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Full Name"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="spousestill"
+                        className="block text-gray-700 mt-5"
+                      >
+                        Address
+                      </label>
+                      <input
+                        id="spousestill"
+                        name="spousestill"
+                        type="address"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+                  <div class="flex mt-5">
+                    <label
+                      htmlFor="spouseemail"
+                      className="block text-gray-700"
+                    >
+                      Does your self-employed spouse or civil partner have a
+                      business website?
+                    </label>
+                    <div class="flex items-center mr-4 ml-5">
+                      <input
+                        id="spouseemailyes-radio"
+                        type="radio"
+                        value="yes"
+                        checked={spouseemail === "yes"}
+                        onChange={handleSpouseemail}
+                        name="spouseemail-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="spouseemailyes-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Yes
+                      </label>
+                    </div>
+                    <div class="flex items-center mr-4">
+                      <input
+                        id="spouseemailno-radio"
+                        type="radio"
+                        value="no"
+                        checked={spouseemail === "no"}
+                        onChange={handleSpouseemail}
+                        name="spouseemail-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="spouseemailno-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        No
+                      </label>
+                    </div>
+                  </div>
+                  {spouseemail === "yes" && (
+                    <div>
+                      <label
+                        htmlFor="spouseemail"
+                        className="block text-gray-700 mt-5"
+                      >
+                        Tell us their email address
+                      </label>
+                      <input
+                        id="spouseemail"
+                        name="spouseemail"
+                        type="email"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Test@test.com"
+                      />
+                    </div>
+                  )}
+                  {spouseemail === "yes" && (
+                    <div>
+                      <label
+                        htmlFor="spousebusiness"
+                        className="block text-gray-700 mt-5"
+                      >
+                        What is the business of your self-employed spouse or
+                        civil partner?
+                      </label>
+                      <input
+                        id="spousebusiness"
+                        name="spousebusiness"
+                        type="text"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Business name"
+                      />
+                    </div>
+                  )}
+                  <div class="flex mt-5">
+                    <label
+                      htmlFor="spousepermission"
+                      className="block text-gray-700"
+                    >
+                      If we need to contact your spouse or civil partner, do you
+                      give us permission?
+                    </label>
+                    <div class="flex items-center mr-4 ml-5">
+                      <input
+                        id="spousepermissionyes-radio"
+                        type="radio"
+                        value="yes"
+                        name="spousepermission-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="spousepermissionyes-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Yes
+                      </label>
+                    </div>
+                    <div class="flex items-center mr-4">
+                      <input
+                        id="spousepermissionno-radio"
+                        type="radio"
+                        value="no"
+                        name="spousepermission-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="spousepermissionno-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        No
+                      </label>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
