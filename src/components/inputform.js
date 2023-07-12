@@ -19,7 +19,6 @@ const Input = () => {
     setOpayfrequency(event.target.value);
   };
 
-
   const [otherpayfrequency, setOtherpayfrequency] = useState();
   const otherhandlePayFrequency = (event) => {
     setOtherpayfrequency(event.target.value);
@@ -97,6 +96,11 @@ const Input = () => {
   const [spouseemail, setSpouseemail] = useState();
   const handleSpouseemail = (event) => {
     setSpouseemail(event.target.value);
+  };
+
+  const [otherbenefit, setOtherbenefit] = useState();
+  const handleOtherbenefit = (event) => {
+    setOtherbenefit(event.target.value);
   };
 
   const handleAddressChange = async (event) => {
@@ -3830,110 +3834,200 @@ const Input = () => {
                     />
                   </div>
                   <div>
-                      <label
-                        htmlFor="payFrequency"
-                        className="block text-gray-700"
-                      >
-                        How often were you normally paid?
-                      </label>
-                      <div class="flex mt-5">
-                        <div class="flex items-center mr-4">
-                          <input
-                            id="opayfrequencyweekly-radio"
-                            type="radio"
-                            value="Weekly"
-                            name="opayfrequency-group"
-                            checked={opayfrequency === "Weekly"}
-                            onChange={handleOpayFrequency}
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            for="opayfrequencyweekly-radio"
-                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                          >
-                            Weekly
-                          </label>
-                        </div>
-                        <div class="flex items-center mr-4">
-                          <input
-                            id="opayfrequencyfortnightly-radio"
-                            type="radio"
-                            value="Fortnightly"
-                            checked={opayfrequency === "Fortnightly"}
-                            onChange={handleOpayFrequency}
-                            name="opayfrequency-group"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            for="opayfrequencyfortnightly-radio"
-                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                          >
-                            Fortnightly
-                          </label>
-                        </div>
-                        <div class="flex items-center mr-4">
-                          <input
-                            id="opayfrequency4weeks-radio"
-                            type="radio"
-                            checked={opayfrequency === "Every 4 Weeks"}
-                            value="Every 4 Weeks"
-                            onChange={handleOpayFrequency}
-                            name="opayfrequency-group"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            for="opayfrequency4weeks-radio"
-                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                          >
-                            Every 4 Weeks
-                          </label>
-                        </div>
-                        <div class="flex items-center mr-4">
-                          <input
-                            id="opayfrequencymonthly-radio"
-                            type="radio"
-                            value="Monthly"
-                            checked={opayfrequency === "Monthly"}
-                            onChange={handleOpayFrequency}
-                            name="opayfrequency-group"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            for="opayfrequencymonthly-radio"
-                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                          >
-                            Monthly
-                          </label>
-                        </div>
-                        <div class="flex items-center mr-4">
-                          <input
-                            id="opayfrequencyother-radio"
-                            type="radio"
-                            value="Other"
-                            checked={opayfrequency === "Other"}
-                            onChange={handleOpayFrequency}
-                            name="opayfrequency-group"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            for="opayfrequencyother-radio"
-                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                          >
-                            Other
-                          </label>
-                        </div>
-                      </div>
-                      {opayfrequency === "Other" && (
+                    <label
+                      htmlFor="payFrequency"
+                      className="block text-gray-700"
+                    >
+                      How often were you normally paid?
+                    </label>
+                    <div class="flex mt-5">
+                      <div class="flex items-center mr-4">
                         <input
-                          id="opayother"
-                          name="opayother"
+                          id="opayfrequencyweekly-radio"
+                          type="radio"
+                          value="Weekly"
+                          name="opayfrequency-group"
+                          checked={opayfrequency === "Weekly"}
+                          onChange={handleOpayFrequency}
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          for="opayfrequencyweekly-radio"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
+                          Weekly
+                        </label>
+                      </div>
+                      <div class="flex items-center mr-4">
+                        <input
+                          id="opayfrequencyfortnightly-radio"
+                          type="radio"
+                          value="Fortnightly"
+                          checked={opayfrequency === "Fortnightly"}
+                          onChange={handleOpayFrequency}
+                          name="opayfrequency-group"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          for="opayfrequencyfortnightly-radio"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
+                          Fortnightly
+                        </label>
+                      </div>
+                      <div class="flex items-center mr-4">
+                        <input
+                          id="opayfrequency4weeks-radio"
+                          type="radio"
+                          checked={opayfrequency === "Every 4 Weeks"}
+                          value="Every 4 Weeks"
+                          onChange={handleOpayFrequency}
+                          name="opayfrequency-group"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          for="opayfrequency4weeks-radio"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
+                          Every 4 Weeks
+                        </label>
+                      </div>
+                      <div class="flex items-center mr-4">
+                        <input
+                          id="opayfrequencymonthly-radio"
+                          type="radio"
+                          value="Monthly"
+                          checked={opayfrequency === "Monthly"}
+                          onChange={handleOpayFrequency}
+                          name="opayfrequency-group"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          for="opayfrequencymonthly-radio"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
+                          Monthly
+                        </label>
+                      </div>
+                      <div class="flex items-center mr-4">
+                        <input
+                          id="opayfrequencyother-radio"
+                          type="radio"
+                          value="Other"
+                          checked={opayfrequency === "Other"}
+                          onChange={handleOpayFrequency}
+                          name="opayfrequency-group"
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        />
+                        <label
+                          for="opayfrequencyother-radio"
+                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >
+                          Other
+                        </label>
+                      </div>
+                    </div>
+                    {opayfrequency === "Other" && (
+                      <input
+                        id="opayother"
+                        name="opayother"
+                        type="text"
+                        onChange={handleChange}
+                        className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Please note your pay frequency"
+                      />
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+            {step === "10" && (
+              <div>
+                <h3 className="text-2xl font-bold text-gray-700 mb-4">
+                  About Other Benefits
+                </h3>
+                <div>
+                  <div class="flex mt-5">
+                    <label
+                      htmlFor="otherbenefit"
+                      className="block text-gray-700"
+                    >
+                      Are you or your partner getting any other benefits or
+                      entitlements?
+                    </label>
+                    <div class="flex items-center mr-4 ml-5">
+                      <input
+                        id="otherbenefityes-radio"
+                        type="radio"
+                        value="yes"
+                        checked={otherbenefit === "yes"}
+                        onChange={handleOtherbenefit}
+                        name="otherbenefit-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="otherbenefityes-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        Yes
+                      </label>
+                    </div>
+                    <div class="flex items-center mr-4">
+                      <input
+                        id="otherbenefitno-radio"
+                        type="radio"
+                        value="no"
+                        checked={otherbenefit === "no"}
+                        onChange={handleOtherbenefit}
+                        name="otherbenefit-group"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="otherbenefitno-radio"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                      >
+                        No
+                      </label>
+                    </div>
+                  </div>
+                  {otherbenefit === "yes" && (
+                    <div>
+                      <div>
+                        <label
+                          htmlFor="civilstopplan"
+                          className="block text-gray-700 mt-5"
+                        >
+                          Tell us what benefits you or your partner are getting
+                          or have claimed.
+                        </label>
+                        <input
+                          id="civilstopplan"
+                          name="civilstopplan"
                           type="text"
                           onChange={handleChange}
                           className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                          placeholder="Please note your pay frequency"
+                          placeholder=""
                         />
-                      )}
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="civilstopplan"
+                          className="block text-gray-700 mt-5"
+                        >
+                          Tell us who gets or has claimed the benefit. Write
+                          your names in full.
+                        </label>
+                        <input
+                          id="civilstopplan"
+                          name="civilstopplan"
+                          type="text"
+                          onChange={handleChange}
+                          className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                          placeholder=""
+                        />
+                      </div>
                     </div>
+                  )}
                 </div>
               </div>
             )}
