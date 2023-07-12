@@ -432,13 +432,17 @@ const Input = () => {
 
   useEffect(() => {
     const dateStr = addDays(duedate, -7 * 15);
+    // while(dateStr.getDay === 0){
+    //     dateStr = addDays(dateStr, - 1);
+    // }
     const date = new Date(dateStr);
-
+    console.log(date.getDay(), date, "------");
     const year = date.getFullYear();
     const month = date.toLocaleString("default", { month: "long" });
     const day = date.getDate();
+    
 
-    const simplifiedDateStr = `${month} ${day}, ${year}`;
+    const simplifiedDateStr = `Sun, ${month} ${day}, ${year}`;
 
     setQualifyingweekstart(simplifiedDateStr);
   }, [duedate]);
@@ -4895,6 +4899,8 @@ export default Input;
 
 const addDays = (date, days) => {
   var result = new Date(date);
-  result.setDate(result.getDate() + days);
+  result.setDate(result.getDate() + days - result.getDay());
+  console.log(result.getDay(), result, "------------")
+  result.setDate(result.getDate() - result.getDay());
   return result;
 };
