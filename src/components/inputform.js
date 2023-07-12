@@ -73,6 +73,11 @@ const Input = () => {
     setCivilsickrel(event.target.value);
   };
 
+  const [mcend, setMcend] = useState();
+  const handleMcend = (event) =>{
+    setMcend(event.target.value);
+  }
+
   const handleAddressChange = async (event) => {
     const inputAddress = event.target.value;
 
@@ -2802,10 +2807,7 @@ const Input = () => {
                       />
                     </div>
                     <div>
-                      <label
-                        htmlFor="civilNI"
-                        className="block text-gray-700"
-                      >
+                      <label htmlFor="civilNI" className="block text-gray-700">
                         Your spouse or civil partner’s National Insurance number
                       </label>
                       <input
@@ -2836,6 +2838,112 @@ const Input = () => {
                       />
                     </div>
                   </div>
+                </div>
+              </div>
+            )}
+            {step === "7" && (
+              <div>
+                <h3 className="text-2xl font-bold text-gray-700 mb-4">
+                  About your marriage or civil partnership
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="mcdate" className="block text-gray-700">
+                      What was the date of your marriage or civil partnership?
+                    </label>
+                    <input
+                      id="mcdate"
+                      name="mcdate"
+                      type="date"
+                      onChange={handleChange}
+                      className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                      placeholder="What was the date of your marriage or civil partnership?"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="mccountry" className="block text-gray-700">
+                      In which country did your marriage or civil partnership
+                      take place?
+                    </label>
+                    <select
+                      id="country"
+                      name="country"
+                      onChange={handleChange}
+                      className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    >
+                      <option>Select</option>
+                      <option>UK</option>
+                      <option>Germany</option>
+                      <option>Ukraine</option>
+                      <option>France</option>
+                      <option>Poland</option>
+                      <option>Portugal</option>
+                      <option>Italy</option>
+                      <option>Finland</option>
+                      <option>Latvia</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div class="flex mt-5">
+                        <label
+                          htmlFor="anotherEmployer"
+                          className="block text-gray-700"
+                        >
+                          Has your marriage ended in divorce or has your civil partnership been dissolved?
+                        </label>
+                        <div class="flex items-center mr-4 ml-5">
+                          <input
+                            id="mcendyes-radio"
+                            type="radio"
+                            value="yes"
+                            checked={mcend === "yes"}
+                            onChange={handleMcend}
+                            name="mcend-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            for="mcendyes-radio"
+                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >
+                            Yes
+                          </label>
+                        </div>
+                        <div class="flex items-center mr-4">
+                          <input
+                            id="mcendno-radio"
+                            type="radio"
+                            value="no"
+                            checked={mcend === "no"}
+                            onChange={handleMcend}
+                            name="mcend-group"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label
+                            for="mcendno-radio"
+                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                          >
+                            No
+                          </label>
+                        </div>
+                      </div>
+                      {mcend === "yes" && (
+                        <div>
+                          <label
+                            htmlFor="mcenddate"
+                            className="block text-gray-700"
+                          >
+                            What date did it end or dissolve?
+                          </label>
+                          <input
+                            id="mcenddate"
+                            name="mcenddate"
+                            type="date"
+                            onChange={handleChange}
+                            className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder="What date did it end or dissolve?"
+                          />
+                        </div>
+                      )}
                 </div>
               </div>
             )}
