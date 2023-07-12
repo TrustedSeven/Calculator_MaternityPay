@@ -11,11 +11,19 @@ const Input = () => {
   const [address3, setAddress3] = useState("");
   const [address4, setAddress4] = useState("");
   const [address5, setAddress5] = useState("");
+  const [address6, setAddress6] = useState("");
+  const [address7, setAddress7] = useState("");
+  const [address8, setAddress8] = useState("");
+  const [address9, setAddress9] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [suggestions2, setSuggestions2] = useState([]);
   const [suggestions3, setSuggestions3] = useState([]);
   const [suggestions4, setSuggestions4] = useState([]);
   const [suggestions5, setSuggestions5] = useState([]);
+  const [suggestions6, setSuggestions6] = useState([]);
+  const [suggestions7, setSuggestions7] = useState([]);
+  const [suggestions8, setSuggestions8] = useState([]);
+  const [suggestions9, setSuggestions9] = useState([]);
 
   const [payfrequency, setPayfrequency] = useState();
   const handlePayFrequency = (event) => {
@@ -281,6 +289,145 @@ const Input = () => {
 
     // setAddress(response.data);
     setSuggestions5([]);
+  };
+  const handleAddress6Change = async (event) => {
+    const inputAddress = event.target.value;
+
+    if (inputAddress.length > 2) {
+      try {
+        const response = await axios.get(
+          `https://api.getAddress.io/autocomplete/${inputAddress}?api-key=AaxzEUFc_0Wnvol9Jv52CA39839`
+        );
+
+        setSuggestions6(response.data.suggestions);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      setSuggestions6([]);
+    }
+
+    setAddress6(inputAddress);
+  };
+
+  const handleSuggestion6Select = async (suggestion) => {
+    try {
+      const response = await axios.get(
+        `https://api.getAddress.io/get/${suggestion}?api-key=AaxzEUFc_0Wnvol9Jv52CA39839`
+      );
+      console.log(response.data, "*************");
+      setAddress6(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+
+    // setAddress(response.data);
+    setSuggestions6([]);
+  };
+
+  const handleAddress7Change = async (event) => {
+    const inputAddress = event.target.value;
+
+    if (inputAddress.length > 2) {
+      try {
+        const response = await axios.get(
+          `https://api.getAddress.io/autocomplete/${inputAddress}?api-key=AaxzEUFc_0Wnvol9Jv52CA39839`
+        );
+
+        setSuggestions7(response.data.suggestions);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      setSuggestions7([]);
+    }
+
+    setAddress7(inputAddress);
+  };
+
+  const handleSuggestion7Select = async (suggestion) => {
+    try {
+      const response = await axios.get(
+        `https://api.getAddress.io/get/${suggestion}?api-key=AaxzEUFc_0Wnvol9Jv52CA39839`
+      );
+      console.log(response.data, "*************");
+      setAddress7(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+
+    // setAddress(response.data);
+    setSuggestions7([]);
+  };
+
+  const handleAddress8Change = async (event) => {
+    const inputAddress = event.target.value;
+
+    if (inputAddress.length > 2) {
+      try {
+        const response = await axios.get(
+          `https://api.getAddress.io/autocomplete/${inputAddress}?api-key=AaxzEUFc_0Wnvol9Jv52CA39839`
+        );
+
+        setSuggestions8(response.data.suggestions);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      setSuggestions8([]);
+    }
+
+    setAddress8(inputAddress);
+  };
+
+  const handleSuggestion8Select = async (suggestion) => {
+    try {
+      const response = await axios.get(
+        `https://api.getAddress.io/get/${suggestion}?api-key=AaxzEUFc_0Wnvol9Jv52CA39839`
+      );
+      console.log(response.data, "*************");
+      setAddress8(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+
+    // setAddress(response.data);
+    setSuggestions8([]);
+  };
+
+  const handleAddress9Change = async (event) => {
+    const inputAddress = event.target.value;
+
+    if (inputAddress.length > 2) {
+      try {
+        const response = await axios.get(
+          `https://api.getAddress.io/autocomplete/${inputAddress}?api-key=AaxzEUFc_0Wnvol9Jv52CA39839`
+        );
+
+        setSuggestions9(response.data.suggestions);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      setSuggestions9([]);
+    }
+
+    setAddress9(inputAddress);
+  };
+
+  const handleSuggestion9Select = async (suggestion) => {
+    try {
+      const response = await axios.get(
+        `https://api.getAddress.io/get/${suggestion}?api-key=AaxzEUFc_0Wnvol9Jv52CA39839`
+      );
+      console.log(response.data, "*************");
+      setAddress9(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+
+    // setAddress(response.data);
+    setSuggestions9([]);
   };
 
   useEffect(() => {
@@ -2180,12 +2327,58 @@ const Input = () => {
                                 Agency’s address, in full
                               </label>
                               <input
-                                id="otheragencyaddress"
-                                name="otheragencyaddress"
+                                id="address"
+                                name="address"
                                 type="text"
-                                onChange={handleChange}
+                                value={address6.line_1}
+                                onChange={handleAddress6Change}
+                                required
                                 className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                                placeholder="agency address"
+                                placeholder="Address Line1"
+                              />
+                              {suggestions6.length > 0 && (
+                                <ul className="max-w-md space-y-1 text-gray-500 list-none list-inside dark:text-gray-400 ml-5">
+                                  {suggestions6.map((suggestion) => (
+                                    <li
+                                      key={suggestion}
+                                      onClick={() =>
+                                        handleSuggestion6Select(suggestion.id)
+                                      }
+                                    >
+                                      {suggestion.address}
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                              <input
+                                id="address"
+                                name="address"
+                                type="text"
+                                value={address6.line_2}
+                                onChange={handleAddress6Change}
+                                required
+                                className="w-full bg-gray-100 border mt-1 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                placeholder="Adress Line2"
+                              />
+                              <input
+                                id="address"
+                                name="address"
+                                type="text"
+                                value={address6.county}
+                                onChange={handleAddress6Change}
+                                required
+                                className="w-full bg-gray-100 border mt-1 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                placeholder="Town"
+                              />
+                              <input
+                                id="address"
+                                name="address"
+                                type="text"
+                                value={address6.postcode}
+                                onChange={handleAddress6Change}
+                                required
+                                className="w-full bg-gray-100 border mt-1 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                placeholder="Postcode"
                               />
                             </div>
                             <div>
@@ -3220,13 +3413,58 @@ const Input = () => {
                         Your spouse or civil partner’s address
                       </label>
                       <input
-                        id="civiladdress"
-                        name="civiladdress"
+                        id="address"
+                        name="address"
                         type="text"
-                        onChange={handleChange}
+                        value={address7.line_1}
+                        onChange={handleAddress7Change}
                         required
                         className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                        placeholder="Your spouse or civil partner’s address"
+                        placeholder="Address Line1"
+                      />
+                      {suggestions7.length > 0 && (
+                        <ul className="max-w-md space-y-1 text-gray-500 list-none list-inside dark:text-gray-400 ml-5">
+                          {suggestions7.map((suggestion) => (
+                            <li
+                              key={suggestion}
+                              onClick={() =>
+                                handleSuggestion7Select(suggestion.id)
+                              }
+                            >
+                              {suggestion.address}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      <input
+                        id="address"
+                        name="address"
+                        type="text"
+                        value={address7.line_2}
+                        onChange={handleAddress7Change}
+                        required
+                        className="w-full bg-gray-100 border mt-1 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Adress Line2"
+                      />
+                      <input
+                        id="address"
+                        name="address"
+                        type="text"
+                        value={address7.county}
+                        onChange={handleAddress7Change}
+                        required
+                        className="w-full bg-gray-100 border mt-1 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Town"
+                      />
+                      <input
+                        id="address"
+                        name="address"
+                        type="text"
+                        value={address7.postcode}
+                        onChange={handleAddress7Change}
+                        required
+                        className="w-full bg-gray-100 border mt-1 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Postcode"
                       />
                     </div>
                   </div>
@@ -3507,12 +3745,58 @@ const Input = () => {
                         Address
                       </label>
                       <input
-                        id="spousestill"
-                        name="spousestill"
-                        type="address"
-                        onChange={handleChange}
+                        id="address"
+                        name="address"
+                        type="text"
+                        value={address8.line_1}
+                        onChange={handleAddress8Change}
+                        required
                         className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                        placeholder=""
+                        placeholder="Address Line1"
+                      />
+                      {suggestions8.length > 0 && (
+                        <ul className="max-w-md space-y-1 text-gray-500 list-none list-inside dark:text-gray-400 ml-5">
+                          {suggestions8.map((suggestion) => (
+                            <li
+                              key={suggestion}
+                              onClick={() =>
+                                handleSuggestion8Select(suggestion.id)
+                              }
+                            >
+                              {suggestion.address}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      <input
+                        id="address"
+                        name="address"
+                        type="text"
+                        value={address8.line_2}
+                        onChange={handleAddress8Change}
+                        required
+                        className="w-full bg-gray-100 border mt-1 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Adress Line2"
+                      />
+                      <input
+                        id="address"
+                        name="address"
+                        type="text"
+                        value={address8.county}
+                        onChange={handleAddress8Change}
+                        required
+                        className="w-full bg-gray-100 border mt-1 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Town"
+                      />
+                      <input
+                        id="address"
+                        name="address"
+                        type="text"
+                        value={address8.postcode}
+                        onChange={handleAddress8Change}
+                        required
+                        className="w-full bg-gray-100 border mt-1 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Postcode"
                       />
                     </div>
                   </div>
@@ -4077,12 +4361,58 @@ const Input = () => {
                         Employer’s address, in full
                       </label>
                       <input
-                        id="to2"
-                        name="to2"
+                        id="address"
+                        name="address"
                         type="text"
-                        onChange={handleChange}
+                        value={address9.line_1}
+                        onChange={handleAddress9Change}
+                        required
                         className="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                        placeholder="Employer’s address, in full"
+                        placeholder="Address Line1"
+                      />
+                      {suggestions9.length > 0 && (
+                        <ul className="max-w-md space-y-1 text-gray-500 list-none list-inside dark:text-gray-400 ml-5">
+                          {suggestions9.map((suggestion) => (
+                            <li
+                              key={suggestion}
+                              onClick={() =>
+                                handleSuggestion9Select(suggestion.id)
+                              }
+                            >
+                              {suggestion.address}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      <input
+                        id="address"
+                        name="address"
+                        type="text"
+                        value={address9.line_2}
+                        onChange={handleAddress9Change}
+                        required
+                        className="w-full bg-gray-100 border mt-1 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Adress Line2"
+                      />
+                      <input
+                        id="address"
+                        name="address"
+                        type="text"
+                        value={address9.county}
+                        onChange={handleAddress9Change}
+                        required
+                        className="w-full bg-gray-100 border mt-1 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Town"
+                      />
+                      <input
+                        id="address"
+                        name="address"
+                        type="text"
+                        value={address9.postcode}
+                        onChange={handleAddress9Change}
+                        required
+                        className="w-full bg-gray-100 border mt-1 border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Postcode"
                       />
                     </div>
                     <div>
