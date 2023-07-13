@@ -5,7 +5,7 @@ import Calculator from "./components/calculator";
 import NHS from "./components/nhs";
 import Input from "./components/inputform";
 import Coming from "./components/coming";
-
+import Smpemployee from "./components/smpemployee";
 
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
         <Route path="/" element={<Calculator />} />
         <Route path="/nhs" element={<NHS />} />
         <Route path="/input" element={<Input />} />
+        <Route path="/smpemployee" element={<Smpemployee />} />
         <Route path="/coming" element={<Coming />} />
       </Routes>
     </BrowserRouter>
