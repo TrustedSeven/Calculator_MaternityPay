@@ -53,8 +53,7 @@ export function calculateSMPMonthlyBreackdown(dueDate, startDate, annualSalary) 
     else
         monthlyDays[2] += isLeap(firstLimitDate.getFullYear());
 
-    console.log(firstLimitDate, secondLimitDate, startDay);
-  
+      
 
     let minSalary = Math.min(dailySalary * 0.9, SMP_RATE / 7);
     let flag = true;
