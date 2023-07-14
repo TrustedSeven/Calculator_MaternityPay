@@ -371,7 +371,7 @@ export default function Smpemployee() {
                         aria-labelledby="headingOne"
                         data-te-parent="#accordionExample"
                       >
-                        <div className="grid grid-cols-2 mt-5 w-[80%] mx-auto">
+                        <div className="grid grid-cols-2 mt-5">
                           <div class="px-5 py-4 content-center items-center col-span-1 ">
                             <strong>SMP details.</strong> <br />
                             Regular Pay - £{item["Regular Pay"]}
