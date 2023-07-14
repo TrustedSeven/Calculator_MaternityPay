@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
+import {
+    Collapse,
+    initTE,
+  } from "tw-elements";
+  
 
 import Navbar from "./navbar";
 
 import { calculateEmployeeSalaryBreakdown } from "../functions/employee_salarybreakdown";
 import { calculateSMPMonthlyBreackdown } from "../functions/calcualteSMP";
 
+initTE({ Collapse });
 export default function Smpemployee() {
   const [duedate, setDuedate] = useState("");
   const [startdate, setStartdate] = useState("");
@@ -17,10 +23,13 @@ export default function Smpemployee() {
   const [mspclaim, setMspclaim] = useState("");
   const [data, setData] = useState();
   const [totalsmp, setTotalsmp] = useState(0);
+  const [smpdata, setSmpdata] = useState([]);
 
   const MainCal = () => {
     setData(calculateEmployeeSalaryBreakdown(salary));
     if (duedate !== "" && startdate !== "") {
+      console.log(calculateSMPMonthlyBreackdown(duedate, startdate, salary));
+      setSmpdata(calculateSMPMonthlyBreackdown(duedate, startdate, salary));
       let smp = 0;
       for (let i = 1; i <= 10; i++) {
         smp =
@@ -42,6 +51,7 @@ export default function Smpemployee() {
           );
       }
       setTotalsmp(smp.toFixed(2));
+      console.log(data);
     }
   };
 
@@ -96,7 +106,7 @@ export default function Smpemployee() {
         <Navbar />
       </div>
       <div>
-        <div className="grid grid-cols-4 mt-5 w-[80%] mx-auto">
+        <div className="grid grid-cols-5 mt-5 w-[80%] mx-auto">
           <div className="content-center items-center col-span-1 ">
             <h2 class="text-2xl font-extrabold dark:text-white">
               Input details
@@ -176,7 +186,7 @@ export default function Smpemployee() {
               <input
                 type="number"
                 id="salary"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="bg-gray-50 border w-[50%] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="£"
                 onChange={(event) => {
                   setSalary(event.target.value);
@@ -204,11 +214,11 @@ export default function Smpemployee() {
             </button>
           </div>
           {/* Expandable Breakdown */}
-          <div className="content-center items-center col-span-2 pl-5 ">
+          <div className="content-center items-center col-span-2 ml-5">
             <h2 class="text-2xl font-extrabold dark:text-white">
-              Expandable Breakdown
+              SMP Tax Breakdown
             </h2>
-            <div className="mt-5">
+            {/* <div className="mt-5">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" class="px-6 py-3">
@@ -323,6 +333,63 @@ export default function Smpemployee() {
                   </tr>
                 </tbody>
               )}
+            </div> */}
+            <div>
+              <div class="relative overflow-x-auto shadow-md sm:rounded-lg pt-5">
+                {smpdata.map((item, index) =>(
+                    <div id="accordionExample" key={index}>
+                    <div class="rounded-t-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+                      <h2 class="mb-0" id="headingOne">
+                        <button
+                          class="group relative flex w-full items-center rounded-t-[15px] border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+                          type="button"
+                          data-te-collapse-init
+                          data-te-target={`#collapse${index}`}
+                          aria-expanded="true"
+                          aria-controls={`collapse${index}`}
+                        >
+                          <strong>{item.Month}</strong> - £{item["Total"]}
+                          {/* <span class="ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="h-6 w-6"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                              />
+                            </svg>
+                          </span> */}
+                        </button>
+                      </h2>
+                      <div
+                        id={`collapse${index}`}
+                        class="!visible hidden"
+                        data-te-collapse-item
+                        data-te-collapse-show
+                        aria-labelledby="headingOne"
+                        data-te-parent="#accordionExample"
+                      >
+                        <div class="px-5 py-4">
+                          <strong>
+                            SMP details.
+                          </strong>{" "}
+                          <br/>
+                          Regular Pay - £{item["Regular Pay"]}<br/>
+                          SMP(90%) - £{item["SMP (90%)"]}<br/>
+                          SMP(172.48) - £{item["SMP (£172.48)"]}<br/>
+                          Total - £{item["Total"]}<br/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           {/* Total SMP, Maternity related dates */}

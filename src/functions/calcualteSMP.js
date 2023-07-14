@@ -46,7 +46,7 @@ export function calculateSMPMonthlyBreackdown(dueDate, startDate, annualSalary) 
     let firstLimitDate = addDays (startDate, 7 * 6);
     let secondLimitDate = addDays (firstLimitDate, 7 * 33);
 
-    let result = [{"Month" : months[startMonth - 1], "Regular Pay" : monthlySalary.toFixed(2), "SMP (90%)" : 0, "SMP (£172.48)" : 0}];
+    let result = [{"Month" : months[startMonth - 1], "Regular Pay" : monthlySalary.toFixed(2), "SMP (90%)" : 0, "SMP (£172.48)" : 0 , "Total" : monthlySalary.toFixed(2)}];
 
     if (startMonth > 2)
         monthlyDays[2] += isLeap(secondLimitDate.getFullYear());
@@ -85,6 +85,7 @@ export function calculateSMPMonthlyBreackdown(dueDate, startDate, annualSalary) 
         "Regular Pay": parseFloat(regularPay).toFixed(2),
         "SMP (90%)": smp1.toFixed(2),
         "SMP (£172.48)": smp2.toFixed(2),
+        "Total" : parseFloat(parseFloat(regularPay).toFixed(2))+parseFloat(parseFloat(smp1).toFixed(2))+parseFloat(parseFloat(smp2).toFixed(2))
       });
     }
     return result;
