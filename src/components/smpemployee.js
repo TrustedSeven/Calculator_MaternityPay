@@ -8,6 +8,7 @@ import { calculateSMPMonthlyBreackdown } from "../functions/calcualteSMP";
 
 initTE({ Collapse });
 export default function Smpemployee() {
+  
   const [duedate, setDuedate] = useState("");
   const [startdate, setStartdate] = useState("");
   const [salary, setSalary] = useState(0);
