@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-    Collapse,
-    initTE,
-  } from "tw-elements";
-  
+import { Collapse, initTE } from "tw-elements";
 
 import Navbar from "./navbar";
 
@@ -336,8 +332,8 @@ export default function Smpemployee() {
             </div> */}
             <div>
               <div class="relative overflow-x-auto shadow-md sm:rounded-lg pt-5">
-                {smpdata.map((item, index) =>(
-                    <div id="accordionExample" key={index}>
+                {smpdata.map((item, index) => (
+                  <div id="accordionExample" key={index}>
                     <div class="rounded-t-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
                       <h2 class="mb-0" id="headingOne">
                         <button
@@ -375,15 +371,41 @@ export default function Smpemployee() {
                         aria-labelledby="headingOne"
                         data-te-parent="#accordionExample"
                       >
-                        <div class="px-5 py-4">
-                          <strong>
-                            SMP details.
-                          </strong>{" "}
-                          <br/>
-                          Regular Pay - £{item["Regular Pay"]}<br/>
-                          SMP(90%) - £{item["SMP (90%)"]}<br/>
-                          SMP(172.48) - £{item["SMP (£172.48)"]}<br/>
-                          Total - £{item["Total"]}<br/>
+                        <div className="grid grid-cols-2 mt-5 w-[80%] mx-auto">
+                          <div class="px-5 py-4 content-center items-center col-span-1 ">
+                            <strong>SMP details.</strong> <br />
+                            Regular Pay - £{item["Regular Pay"]}
+                            <br />
+                            SMP(90%) - £{item["SMP (90%)"]}
+                            <br />
+                            SMP(172.48) - £{item["SMP (£172.48)"]}
+                            <br />
+                            Total - £{item["Total"]}
+                            <br />
+                          </div>
+                          <div className="px-5 py-4 content-center items-center col-span-1 ">
+                            <strong>Tax vs Take-home Pay.</strong> <br />
+                            Tax - £
+                            {
+                              calculateEmployeeSalaryBreakdown(
+                                item["Total"] * 12
+                              ).monthly.totalTaxdue
+                            }
+                            <br />
+                            National Insurance - £
+                            {
+                              calculateEmployeeSalaryBreakdown(
+                                item["Total"] * 12
+                              ).monthly.nationalInsurance
+                            }
+                            <br />
+                            Net Wage - £
+                            {
+                              calculateEmployeeSalaryBreakdown(
+                                item["Total"] * 12
+                              ).monthly.netWage
+                            }
+                          </div>
                         </div>
                       </div>
                     </div>
