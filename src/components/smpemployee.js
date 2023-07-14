@@ -8,7 +8,6 @@ import { calculateSMPMonthlyBreackdown } from "../functions/calcualteSMP";
 
 initTE({ Collapse });
 export default function Smpemployee() {
-  
   const [duedate, setDuedate] = useState("");
   const [startdate, setStartdate] = useState("");
   const [salary, setSalary] = useState(0);
@@ -21,6 +20,8 @@ export default function Smpemployee() {
   const [data, setData] = useState();
   const [totalsmp, setTotalsmp] = useState(0);
   const [smpdata, setSmpdata] = useState([]);
+
+  const [buttonselect, setButtonselect] = useState();
 
   const MainCal = () => {
     setData(calculateEmployeeSalaryBreakdown(salary));
@@ -334,81 +335,63 @@ export default function Smpemployee() {
             <div>
               <div class="relative overflow-x-auto shadow-md sm:rounded-lg pt-5">
                 {smpdata.map((item, index) => (
-                  <div id="accordionExample" key={index}>
+                  <div key={index}>
                     <div class="rounded-t-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                      <h2 class="mb-0" id="headingOne">
+                      <h2 class="mb-0">
                         <button
                           class="group relative flex w-full items-center rounded-t-[15px] border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
                           type="button"
-                          data-te-collapse-init
-                          data-te-target={`#collapse${index}`}
-                          aria-expanded="true"
-                          aria-controls={`collapse${index}`}
+                          onClick={() => {
+                            if (buttonselect === index) {
+                              setButtonselect(100);
+                            } else {
+                              setButtonselect(index);
+                            }
+                          }}
                         >
                           <strong>{item.Month}</strong> - £{item["Total"]}
-                          {/* <span class="ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke-width="1.5"
-                              stroke="currentColor"
-                              class="h-6 w-6"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                              />
-                            </svg>
-                          </span> */}
                         </button>
                       </h2>
-                      <div
-                        id={`collapse${index}`}
-                        class="!visible hidden"
-                        data-te-collapse-item
-                        data-te-collapse-show
-                        aria-labelledby="headingOne"
-                        data-te-parent="#accordionExample"
-                      >
-                        <div className="grid grid-cols-2 mt-5">
-                          <div class="px-5 py-4 content-center items-center col-span-1 ">
-                            <strong>SMP details.</strong> <br />
-                            Regular Pay - £{item["Regular Pay"]}
-                            <br />
-                            SMP(90%) - £{item["SMP (90%)"]}
-                            <br />
-                            SMP(172.48) - £{item["SMP (£172.48)"]}
-                            <br />
-                            Total - £{item["Total"]}
-                            <br />
-                          </div>
-                          <div className="px-5 py-4 content-center items-center col-span-1 ">
-                            <strong>Tax vs Take-home Pay.</strong> <br />
-                            Tax - £
-                            {
-                              calculateEmployeeSalaryBreakdown(
-                                item["Total"] * 12
-                              ).monthly.totalTaxdue
-                            }
-                            <br />
-                            National Insurance - £
-                            {
-                              calculateEmployeeSalaryBreakdown(
-                                item["Total"] * 12
-                              ).monthly.nationalInsurance
-                            }
-                            <br />
-                            Net Wage - £
-                            {
-                              calculateEmployeeSalaryBreakdown(
-                                item["Total"] * 12
-                              ).monthly.netWage
-                            }
+                      {buttonselect === index && (
+                        <div>
+                          <div className="grid grid-cols-2 mt-5">
+                            <div class="px-5 py-4 content-center items-center col-span-1 ">
+                              <strong>SMP details.</strong> <br />
+                              Regular Pay - £{item["Regular Pay"]}
+                              <br />
+                              SMP(90%) - £{item["SMP (90%)"]}
+                              <br />
+                              SMP(172.48) - £{item["SMP (£172.48)"]}
+                              <br />
+                              Total - £{item["Total"]}
+                              <br />
+                            </div>
+                            <div className="px-5 py-4 content-center items-center col-span-1 ">
+                              <strong>Tax vs Take-home Pay.</strong> <br />
+                              Tax - £
+                              {
+                                calculateEmployeeSalaryBreakdown(
+                                  item["Total"] * 12
+                                ).monthly.totalTaxdue
+                              }
+                              <br />
+                              National Insurance - £
+                              {
+                                calculateEmployeeSalaryBreakdown(
+                                  item["Total"] * 12
+                                ).monthly.nationalInsurance
+                              }
+                              <br />
+                              Net Wage - £
+                              {
+                                calculateEmployeeSalaryBreakdown(
+                                  item["Total"] * 12
+                                ).monthly.netWage
+                              }
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                   </div>
                 ))}
