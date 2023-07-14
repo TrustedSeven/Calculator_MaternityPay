@@ -349,7 +349,7 @@ export default function Smpemployee() {
                             }
                           }}
                         >
-                          <strong>{item.Month}</strong> - £{item["Total"]}
+                          <strong>{item.Month}</strong> - £{parseFloat(item["Total"]).toFixed(2)}
                         </button>
                       </h2>
                       {buttonselect === index && (
