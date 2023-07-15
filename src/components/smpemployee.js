@@ -461,14 +461,14 @@ const qualifyingWeek = (date) => {
 
 const lastdateClaimleave = (date) => {
   var result = new Date(date);
-  result.setDate(result.getDate() - 7 * 15);
+  result.setDate(result.getDate() - 7 * 14);
   result.setDate(result.getDate() - result.getDay() - 1);
   return result;
 };
 
 const maternityEnd = (date) => {
   var result = new Date(date);
-  result.setDate(result.getDate() + 7 * 52);
+  result.setDate(result.getDate() + 7 * 52 -1);
   return result;
 };
 
