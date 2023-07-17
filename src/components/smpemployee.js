@@ -104,8 +104,8 @@ export default function Smpemployee() {
         <Navbar />
       </div>
       <div>
-        <div className="grid grid-cols-5 mt-5 w-[80%] mx-auto">
-          <div className="content-center items-center col-span-1 ">
+        <div className="grid lg:grid-cols-5 mt-5 w-[80%] mx-auto">
+          <div className="content-center items-center lg:col-span-1 ">
             <h2 class="text-2xl font-extrabold dark:text-white">
               Input details
             </h2>
@@ -212,7 +212,7 @@ export default function Smpemployee() {
             </button>
           </div>
           {/* Expandable Breakdown */}
-          <div className="content-center items-center col-span-2 ml-5">
+          <div className="content-center items-center lg:col-span-2 ml-5">
             <h2 class="text-2xl font-extrabold dark:text-white">
               SMP Tax Breakdown
             </h2>
@@ -469,7 +469,7 @@ export default function Smpemployee() {
             </div>
           </div>
           {/* Total SMP, Maternity related dates */}
-          <div className="content-center items-center col-span-1 pl-5">
+          <div className="content-center items-center lg:col-span-1 pl-5">
             <h2 class="text-2xl font-extrabold dark:text-white">
               Maternity Pay details
             </h2>
