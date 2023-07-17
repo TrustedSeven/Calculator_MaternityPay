@@ -350,7 +350,7 @@ export default function Smpemployee() {
                       >
                         <div className="grid grid-cols-8">
                           <div class="content-center items-center col-span-2 ">
-                            <strong>{item.Month}</strong>
+                            <div className="text-lg">{item.Month}</div>
                           </div>
                           <div class="content-center items-center col-span-5 ">
                             <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
