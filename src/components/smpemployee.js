@@ -337,90 +337,66 @@ export default function Smpemployee() {
                 {smpdata.map((item, index) => (
                   <div key={index}>
                     <div class="rounded-t-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-                      <button
-                        class="w-full items-center rounded-t-[15px] border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white"
-                        type="button"
-                        onClick={() => {
-                          if (buttonselect === index) {
-                            setButtonselect(100);
-                          } else {
-                            setButtonselect(index);
-                          }
-                        }}
-                      >
-                        <div className="grid grid-cols-8">
-                          <div class="content-center items-center col-span-2 ">
-                            <div className="text-lg">{item.Month}</div>
-                          </div>
-                          <div class="content-center items-center col-span-5 ">
-                            <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-                              <div
-                                class={`bg-red-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full`}
-                                style={{
-                                  width: `${(
-                                    (parseFloat(item["Total"]).toFixed(2) /
-                                      salary) *
-                                    12 *
-                                    100
-                                  ).toFixed(0)}%`,
-                                }}
-                              >
-                                {" "}
-                                £{parseFloat(item["Total"]).toFixed(2)}
-                              </div>
-                            </div>
-                            {(salary / 12 - parseFloat(item["Total"])).toFixed(
-                              2
-                            ) >= 1 && (
-                              <div>
-                                {(
-                                  salary / 12 -
-                                  parseFloat(item["Total"])
-                                ).toFixed(2)}{" "}
-                                less than before maternity pay.
-                              </div>
-                            )}
-                          </div>
+                      <div class="content-center items-center flex">
+                        <div className="text-lg lg:text-xl font-semibold pl-5 flex-1">
+                          {item.Month}
+                        </div>
+                        <button
+                          class="float-right pr-5"
+                          type="button"
+                          onClick={() => {
+                            if (buttonselect === index) {
+                              setButtonselect(100);
+                            } else {
+                              setButtonselect(index);
+                            }
+                          }}
+                        >
                           <div class="pl-5 content-center items-center col-span-1">
                             {buttonselect !== index && (
-                              <div>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  strokeWidth={1.5}
-                                  stroke="currentColor"
-                                  className="w-6 h-6"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                                  />
-                                </svg>
+                              <div className="underline text-blue-400">
+                                Monthly Breakdown
                               </div>
                             )}
                             {buttonselect === index && (
-                              <div>
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  strokeWidth={1.5}
-                                  stroke="currentColor"
-                                  className="w-6 h-6"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                                  />
-                                </svg>
+                              <div className="underline text-blue-400">
+                                Less
                               </div>
                             )}
                           </div>
+                        </button>
+                      </div>
+                      <div class="w-full items-center rounded-t-[15px] border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white">
+                        <div class="content-center items-center">
+                          <div class="w-full bg-gray-200 dark:bg-gray-700">
+                            <div
+                              class={`bg-red-500 text-xs font-medium text-blue-100 text-center p-0.5 leading-none`}
+                              style={{
+                                width: `${(
+                                  (parseFloat(item["Total"]).toFixed(2) /
+                                    salary) *
+                                  12 *
+                                  100
+                                ).toFixed(0)}%`,
+                              }}
+                            >
+                              {" "}
+                              £{parseFloat(item["Total"]).toFixed(2)}
+                            </div>
+                          </div>
+                          {(salary / 12 - parseFloat(item["Total"])).toFixed(
+                            2
+                          ) >= 1 && (
+                            <div>
+                              {(
+                                salary / 12 -
+                                parseFloat(item["Total"])
+                              ).toFixed(2)}{" "}
+                              less than before maternity pay.
+                            </div>
+                          )}
                         </div>
-                      </button>
+                      </div>
 
                       {buttonselect === index && (
                         <div>
