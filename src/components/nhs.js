@@ -22,8 +22,8 @@ export default function NHS() {
       <div>
         <Navbar />
       </div>
-      <div className="grid grid-cols-3 ml-5">
-        <div className="content-center items-center col-span-1">
+      <div className="grid lg:grid-cols-3 ml-5">
+        <div className="content-center items-center lg:col-span-1">
           <h2 class="text-2xl font-extrabold dark:text-white">Input details</h2>
           <div className="mt-5">
             <label
@@ -168,7 +168,7 @@ export default function NHS() {
             </button>
           </div>
         </div>
-        <div className="content-center items-center col-span-2">
+        <div className="content-center items-center lg:col-span-2">
           <h2 class="text-2xl font-extrabold dark:text-white">NHS Result</h2>
           <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
