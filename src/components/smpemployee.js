@@ -104,7 +104,7 @@ export default function Smpemployee() {
         <Navbar />
       </div>
       <div>
-        <div className="grid lg:grid-cols-5 mt-5 w-[80%] mx-auto">
+        <div className="grid lg:grid-cols-4 mt-5 w-[80%] mx-auto">
           <div className="content-center items-center lg:col-span-1 mt-5">
             <h2 class="text-2xl font-extrabold dark:text-white">
               Input details
