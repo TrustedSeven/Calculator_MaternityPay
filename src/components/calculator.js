@@ -69,11 +69,11 @@ export default function Calculator() {
 
   return (
     <div>
-      <div>
+      <div className="w-full">
         <Navbar />
       </div>
-    <div className="grid grid-cols-4 ml-5">
-      <div className="content-center items-center col-span-1">
+    <div className="grid lg:grid-cols-4 ml-5">
+      <div className="content-center items-center lg:col-span-1">
         <h2 class="text-2xl font-extrabold dark:text-white">Input details</h2>
         <div className="mt-5">
           <label
@@ -170,7 +170,7 @@ export default function Calculator() {
           </button>
         </div>
       </div>
-      <div className="col-span-1">
+      <div className="lg:col-span-1">
         <h2 class="text-2xl font-extrabold dark:text-white">
           Salary per Day/Week/Month/Year
         </h2>
@@ -263,7 +263,7 @@ export default function Calculator() {
           </div>
         </div>
       </div>
-      <div className="col-span-2 pr-5">
+      <div className="lg:col-span-2 pr-5">
         <h2 class="text-2xl font-extrabold dark:text-white">SMP details</h2>
         {/* <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-5">
           <img class="rounded-t-lg" src={Maternity_Leave} alt="" />
