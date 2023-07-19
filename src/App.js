@@ -17,6 +17,8 @@ function App() {
         <Route path="/input" element={<Input />} />
         <Route path="/smpemployee" element={<Smpemployee />} />
         <Route path="/coming" element={<Coming />} />
+        <Route path="/signin" element={<Coming />} />
+        <Route path="/signup" element={<Coming />} />
       </Routes>
     </BrowserRouter>
   );

@@ -104,9 +104,9 @@ export default function Smpemployee() {
         <Navbar />
       </div>
       <div>
-        <div className="grid lg:grid-cols-4 mt-5 w-[80%] mx-auto">
+        <div className="grid lg:grid-cols-4 w-[80%] mx-auto">
           <div className="content-center items-center lg:col-span-1 mt-5">
-            <h2 class="text-2xl font-extrabold dark:text-white">
+            <h2 class="text-2xl font-extrabold dark:text-white font-serif">
               Input details
             </h2>
             <div>
@@ -194,7 +194,7 @@ export default function Smpemployee() {
             </div>
             <div>
               <div class="block max-w-sm p-6 mt-5 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                   Eligible Week Start
                 </h5>
                 <p class="font-normal text-gray-700 dark:text-gray-400">
@@ -213,7 +213,7 @@ export default function Smpemployee() {
           </div>
           {/* Expandable Breakdown */}
           <div className="content-center items-center lg:col-span-2 lg:ml-5 mt-5">
-            <h2 class="text-2xl font-extrabold dark:text-white">
+            <h2 class="text-2xl font-extrabold font-serif dark:text-white">
               SMP Tax Breakdown
             </h2>
             {/* <div className="mt-5">
@@ -333,7 +333,7 @@ export default function Smpemployee() {
               )}
             </div> */}
             <div>
-              <div class="relative overflow-x-auto shadow-md sm:rounded-lg pt-5">
+              <div class="relative overflow-x-auto shadow-md mt-5 mb-5 sm:rounded-lg pt-5">
                 {smpdata.map((item, index) => (
                   <div key={index}>
                     <div class="rounded-t-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
@@ -355,7 +355,7 @@ export default function Smpemployee() {
                           <div class="pl-5 content-center items-center col-span-1">
                             {buttonselect !== index && (
                               <div className="underline text-blue-400">
-                                Monthly Breakdown
+                                Month Breakdown
                               </div>
                             )}
                             {buttonselect === index && (
@@ -378,6 +378,7 @@ export default function Smpemployee() {
                                   12 *
                                   100
                                 ).toFixed(0)}%`,
+                                minWidth: "60px"
                               }}
                             >
                               {" "}
@@ -446,19 +447,19 @@ export default function Smpemployee() {
           </div>
           {/* Total SMP, Maternity related dates */}
           <div className="content-center items-center lg:col-span-1 lg:pl-5 mt-5">
-            <h2 class="text-2xl font-extrabold dark:text-white">
+            <h2 class="text-2xl font-extrabold font-serif dark:text-white">
               Maternity Pay details
             </h2>
             <div className="mt-5">
               <div class="block max-w-sm p-6 mt-5 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                   Total SMP
                 </h5>
                 <p class="font-normal text-gray-700 dark:text-gray-400">
                   £{totalsmp}
                 </p>
               </div>
-              <div>
+              <div className="mt-5">
                 <tbody>
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td class="px-6 py-4">
